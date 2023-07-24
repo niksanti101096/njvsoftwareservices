@@ -1,13 +1,17 @@
 /* .nav-link:hover {
   background-color: rgb(171, 182, 194);
 } */
+
+.mt-7 {
+  margin-top: 70px;
+}
 .hover-underline-animation {
   display: inline-block;
   position: relative;
 }
 
 .default-text-color {
-    color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .hover-underline-animation::after {
@@ -29,8 +33,8 @@
 }
 
 .sloganHome {
-    align-items: center;
-    font-size: 5rem;
+  align-items: center;
+  font-size: 5rem;
 }
 
 .sloganAboutUs {
@@ -40,8 +44,68 @@
 
 .home,
 .about {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 .home div {
-    line-height: 6rem;
+  line-height: 6rem;
+}
+
+.wrapper0,
+.wrapper1,
+.wrapper2,
+.card0,
+.card1,
+.card2 {
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  position: relative;
+}
+.wrapper0,
+.wrapper1,
+.wrapper2 {
+  perspective: 1000px;
+}
+
+.card0,
+.card1,
+.card2 {
+  text-align: center;
+  transition: all 1.5s cubic-bezier(0.7, -0.5, 0.3, 1.8);
+  transform-style: preserve-3d;
+}
+
+.wrapper0:hover .card0,
+.wrapper1:hover .card1,
+.wrapper2:hover .card2 {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  width: 300px;
+  position: relative;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+.front {
+  cursor: pointer;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 50px;
+  background-position: center center;
+  background-size: contain;
+}
+
+.front img {
+  width: 100%;
+}
+
+.back {
+  transform: rotateY(180deg);
+  position: absolute;
+  border-radius: 50px;
+  height: 450px;
 }
