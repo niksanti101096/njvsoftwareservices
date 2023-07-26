@@ -45,13 +45,14 @@ function ServicesModal({
               ></textarea>
             </div>
             <div className="form-group">
-              <label>Service Image Link</label>
-              <input
+              <label>Service Image Link</label><br />
+              {/* <input
                 type="text"
                 className="form-control"
                 value={servicesImage}
                 onChange={handleServiceImage}
-              />
+              /> */}
+              <input type="file" name="" id="" />
             </div>
           </form>
         </Modal.Body>

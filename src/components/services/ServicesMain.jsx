@@ -107,9 +107,6 @@ function ServicesMain() {
         >
           Add Service
         </button>
-        <button type="button" className="btn btn-danger ms-3">
-          Remove Services
-        </button>
       </div>
       <ServicesModal
         showModal={showModal}

@@ -8,7 +8,7 @@ function MyHeader() {
         data-bs-theme="dark"
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand hover-underline-animation" href="/">
             NJV Software Services
           </a>
           <div className="d-flex">
