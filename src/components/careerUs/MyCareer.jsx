@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CareerModal from "./CareerModal";
 // import "../career.css";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import { FreeMode } from 'swiper';
 import "swiper/css";
@@ -31,41 +30,12 @@ import img13 from "./img/img13.jpg";
 import img14 from "./img/img14.jpg";
 import img15 from "./img/img15.jpg";
 import img16 from "./img/img16.jpg";
-import img1 from "./img/img1.jpg";
-import img2 from "./img/img2.jpg";
-import img3 from "./img/img3.jpg";
-import img4 from "./img/img4.jpg";
-import img5 from "./img/img5.jpg";
-import img6 from "./img/img6.jpg";
-import img7 from "./img/img7.jpg";
-import img8 from "./img/img8.jpg";
-import img9 from "./img/img9.jpg";
-import img10 from "./img/img10.jpg";
-import img11 from "./img/img11.jpg";
-import img12 from "./img/img12.jpg";
-import img13 from "./img/img13.jpg";
-import img14 from "./img/img14.jpg";
-import img15 from "./img/img15.jpg";
-import img16 from "./img/img16.jpg";
-
 import img17 from "./img/img17.jpg";
 import img18 from "./img/img18.jpg";
 import img19 from "./img/img19.jpg";
 import img20 from "./img/img20.jpg";
 import img21 from "./img/img21.jpg";
 import img22 from "./img/img22.jpg";
-import img17 from "./img/img17.jpg";
-import img18 from "./img/img18.jpg";
-import img19 from "./img/img19.jpg";
-import img20 from "./img/img20.jpg";
-import img21 from "./img/img21.jpg";
-import img22 from "./img/img22.jpg";
-// import img23 from './img/img23.jpg';
-import img24 from "./img/img24.jpg";
-import img25 from "./img/img25.jpg";
-import img26 from "./img/img26.jpg";
-import img27 from "./img/img27.jpg";
-import img28 from "./img/img28.jpg";
 import img24 from "./img/img24.jpg";
 import img25 from "./img/img25.jpg";
 import img26 from "./img/img26.jpg";
@@ -108,25 +78,23 @@ const MyCareer = () => {
     setShowModal(false);
   };
   function handleSave1(e) {
-      e.preventDefault()
-      if (careerTitle !== "" && careerDescription !=="" && careerDate !=="") {
-            const career1Id = Date.now()
-            const newData = {
-                  id:career1Id, 
-                  title:careerTitle,
-                  description:careerDescription,
-                  salary:careerSalary,
-                  date:careerDate,
-                  image:careerImage
-          
-            }
-            setCareerArray([...careerArray, newData])
-      }
-      
+    e.preventDefault();
+    if (careerTitle !== "" && careerDescription !== "" && careerDate !== "") {
+      const career1Id = Date.now();
+      const newData = {
+        id: career1Id,
+        title: careerTitle,
+        description: careerDescription,
+        salary: careerSalary,
+        date: careerDate,
+        image: careerImage,
+      };
+      setCareerArray([...careerArray, newData]);
+    }
   }
-      useEffect( () => {
-            localStorage.setItem("Career1DB", JSON.stringify(careerArray))
-      },[careerArray]);
+  useEffect(() => {
+    localStorage.setItem("Career1DB", JSON.stringify(careerArray));
+  }, [careerArray]);
 
   return (
     <div className=" ">
@@ -526,18 +494,15 @@ const MyCareer = () => {
         careerTitle={careerTitle}
         careerDescription={careerDescription}
         careerImage={careerImage}
-        
-        handleCareer1Title = {handleCareer1Title}
-        handleCareer1Description = {handleCareer1Description}
-        handleCareer1Salary = {handleCareer1Salary}
-        handleCareer1Date = {handleCareer1Date}
-        handleCareer1Image = {handleCareer1Image}
+        handleCareer1Title={handleCareer1Title}
+        handleCareer1Description={handleCareer1Description}
+        handleCareer1Salary={handleCareer1Salary}
+        handleCareer1Date={handleCareer1Date}
+        handleCareer1Image={handleCareer1Image}
         handleSave1={handleSave1}
       ></CareerModal>
     </div>
   );
 };
-
-export default MyCareer;
 
 export default MyCareer;
