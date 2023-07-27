@@ -15,7 +15,10 @@ const CareerModal = ({
   handleCareer1Salary,
   handleCareer1Date,
   handleCareer1Image,
-  handleSave1
+  handleSave1,
+  showSaveBtn1,
+  showUpdateBtn1,
+  handleUpdate1
 
 }) => {
   return (
@@ -67,9 +70,16 @@ const CareerModal = ({
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSave1}>
-              Save 
-            </Button>
+         {showSaveBtn1 && (
+             <Button variant="primary" onClick={handleSave1}>
+             Save 
+           </Button>
+         )}
+          {showUpdateBtn1 && (
+             <Button variant="warning" onClick={handleUpdate1}>
+             Update
+           </Button>
+         )}
         </Modal.Footer>
       </Modal>
     </>

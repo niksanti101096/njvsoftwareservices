@@ -53,11 +53,20 @@ const MyCareer = () => {
   const [careerTitle, setCareerTitle] = useState("");
   const [careerDescription, setCareerDescription] = useState("");
   const [careerImage, setCareerImage] = useState();
+  const [careerIdHolder, setCareerIdHolder] = useState();
+  const [showSaveBtn1, setShowSaveBtn1] = useState(true);
+  const [showUpdateBtn1, setShowUpdateBtn1] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
 
   function handleCareer1Add() {
     setShowModal(true);
+    setShowSaveBtn1(true);
+    setShowUpdateBtn1(false);
+    setCareerTitle("");
+    setCareerDate("");
+    setCareerSalary("");
+    setCareerDescription("");
   }
   function handleCareer1Title(e) {
     setCareerTitle(e.target.value);
@@ -77,29 +86,52 @@ const MyCareer = () => {
   const handleClose = () => {
     setShowModal(false);
   };
-  function handleDelete() {
-    
+  function handleUpdate1(e) {
+    e.preventDefault();
+    if (careerTitle !== "" && careerDescription !== "" && careerDate !== "") {
+      const newData = {
+        id: careerIdHolder,
+        title: careerTitle,
+        description: careerDescription,
+        salary: careerSalary,
+        date: careerDate,
+        image: careerImage,
+      };
+      setCareerArray([
+        ...careerArray.filter((career) => career.id !== careerIdHolder),
+        newData,
+      ]);
+      setShowModal(false);
+     
+      setCareerTitle("");
+      setCareerDate("");
+      setCareerSalary("");
+      setCareerDescription("");
+    }
   }
   function handleSave1(e) {
-      e.preventDefault()
-      if (careerTitle !== "" && careerDescription !=="" && careerDate !=="") {
-            const career1Id = Date.now()
-            const newData = {
-                  id:career1Id, 
-                  title:careerTitle,
-                  description:careerDescription,
-                  salary:careerSalary,
-                  date:careerDate,
-                  image:careerImage
-          
-            }
-            setCareerArray([...careerArray, newData])
-      }
-      
+    e.preventDefault();
+    if (careerTitle !== "" && careerDescription !== "" && careerDate !== "") {
+      const career1Id = Date.now();
+      const newData = {
+        id: career1Id,
+        title: careerTitle,
+        description: careerDescription,
+        salary: careerSalary,
+        date: careerDate,
+        image: careerImage,
+      };
+      setCareerArray([...careerArray, newData]);
+      setCareerTitle("");
+      setCareerDescription("");
+      setCareerDate("");
+      setCareerSalary("");
+      setShowModal(false);
+    }
   }
-      useEffect( () => {
-            localStorage.setItem("Career1DB", JSON.stringify(careerArray))
-      },[careerArray]);
+  useEffect(() => {
+    localStorage.setItem("Career1DB", JSON.stringify(careerArray));
+  }, [careerArray]);
 
   return (
     <div className=" ">
@@ -114,6 +146,7 @@ const MyCareer = () => {
         <h1>
           {" "}
           Full-Stack Web Developer | Frond-End Web Developer | Back-End Web
+          Developer |  SQL Developer | UI/UX Design- Developer | Game Developer | App
           Developer
         </h1>
         <button onClick={handleCareer1Add}>Add</button>
@@ -147,234 +180,30 @@ const MyCareer = () => {
             },
           }}
         >
-        {careerArray.map((item,index) => (
+          {careerArray.map((item, index) => (
             <SwiperSlide key={index}>
-
-            <CareerCard
-              data={{
-                imgSrc: "",
-                salary: item.salary,
-                title: item.title,
-                desc: item.description,
-                date: item.date,
-                id: item.id
-                
-              }}
-              setCareerArray = {setCareerArray}
-            />
-          </SwiperSlide>
-        ))}
-         
+              <CareerCard
+                salary={item.salary}
+                title={item.title}
+                desc={item.description}
+                date={item.date}
+                id={item.id}
+                setCareerArray={setCareerArray}
+                setCareerIdHolder={setCareerIdHolder}
+                setCareerTitle={setCareerTitle}
+                setCareerSalary={setCareerSalary}
+                setCareerDate={setCareerDate}
+                setCareerDescription={setCareerDescription}
+                setShowModal={setShowModal}
+                setShowSaveBtn1={setShowSaveBtn1}
+                setShowUpdateBtn1={setShowUpdateBtn1}
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
-      <div>
-        <h1>
-          {" "}
-          SQL Developer | UI/UX Design- Developer | Game Developer | App
-          Developer
-        </h1>
-      </div>
-      <div className="container py-4 px-4 d-flex justify-content-center align-items ">
-        <Swiper
-          freeMode={true}
-          grabCursor={true}
-          modules={[]}
-          className="mySwiper"
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            480: {
-              slidesPerView: 2,
-              spaceBetween: 10,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 15,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 15,
-            },
-            1280: {
-              slidesPerView: 4,
-              spaceBetween: 30,
-            },
-          }}
-        >
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img13,
-                salary: "PHP 55,000 - PHP 77,000",
-                title: "SQL Developer - Batangas",
-                desc: " Business Process Outsourcing International, Inc.Batangas",
-                date: " Posted 22 hours ago ",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img14,
-                salary: "PHP 100,000 - PHP 150,000",
-                title:
-                  "Database Support Engineer- SQL Server- Hybrid Work Set Up",
-                desc: " Information Professionals, Inc. National Capital Reg  ",
-                date: " Posted 1 hour ago",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img15,
-                salary: "####",
-                title: "Sr. Oracle/SQL Database Admin (Managerial)",
-                desc: " Solaire Resort & Casino Paranaque City ",
-                date: " Posted on 18-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img16,
-                salary: "####",
-                title: "Sr. SQL Developer",
-                desc: "  Muntinlupa City ",
-                date: "Posted on 18-Jul-23 ",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img17,
-                salary: "PHP 45,000 - PHP 55,000",
-                title: "REMOTE: UI/UX Designer and Graphic Designer",
-                desc: "Nowcom Global Services, LLC Pasig City",
-                date: "Posted 4 hours ago",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img18,
-                salary: "####",
-                title: "UI/UX Designer-Developer",
-                desc: "ELGADA BPO  SOLUTIONS INC. Makati City",
-                date: "Posted on 10-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img19,
-                salary: "PHP 50,000 - PHP 65,000",
-                title:
-                  "Senior Digital Creative Designer (UI/UX) - WFH & DAYSHIFT",
-                desc: "TBelle Corp. Central Visayas",
-                date: "Posted on 12-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img20,
-                salary: "PHP 60,000 - PHP 120,000",
-                title: "UX Designer / Data Visualizer",
-                desc: "Eclaro Business  Solutions, Inc Taguig City",
-                date: "Posted on 11-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img21,
-                salary: "PHP 30,000 - PHP 50,000",
-                title: "Unity Game Developer",
-                desc: "ThinkBIT Solutions  Phils. Inc. National Capital Reg",
-                date: "Posted on 11-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img22,
-                salary: "PHP 18,000 - PHP 20,000",
-                title: "Mobile Game Programmer",
-                desc: "Sysgen RPO, Inc.",
-                date: "Posted on 11-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          {/* <SwiperSlide>
-                        <CareerCard data={{imgSrc: img23, salary: '$10', title: 'Full Stack Developer'}} />
-                  </SwiperSlide>   */}
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img24,
-                salary: "####",
-                title: "Game Developer (for Startup Company)",
-                desc: "Q2 HR Solutions Inc. National Capital Reg",
-                date: "Posted on 17-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img25,
-                salary: "PHP 50,000 - PHP 100,000",
-                title: "Web APP Developer (Junior- Senior)",
-                desc: "J-K NETWORK RECRUITMENT SERVICES AND CONSULTANCY, INC. Multiple work locations",
-                date: "Posted on 12-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img26,
-                salary: "PHP 50,000 - PHP 100,000",
-                title: "Senior Mobile App Developer",
-                desc: "MNLeistung (MNL) Rizal (others)",
-                date: "Posted on 4-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img27,
-                salary: "PHP 60,000 - PHP 100,000",
-                title: "Shopify App Developer",
-                desc: "FOODLINE.SG PTE.  LTD. Manila City",
-                date: "Posted on 13-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img28,
-                salary: "####",
-                title: "Web App Developer",
-                desc: "MicroSourcing National Capital Reg",
-                date: " Posted on 14-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-        </Swiper>
-      </div>
+     
+    
       <CareerModal
         showModal={showModal}
         handleClose={handleClose}
@@ -383,13 +212,15 @@ const MyCareer = () => {
         careerTitle={careerTitle}
         careerDescription={careerDescription}
         careerImage={careerImage}
-        
-        handleCareer1Title = {handleCareer1Title}
-        handleCareer1Description = {handleCareer1Description}
-        handleCareer1Salary = {handleCareer1Salary}
-        handleCareer1Date = {handleCareer1Date}
-        handleCareer1Image = {handleCareer1Image}
+        handleCareer1Title={handleCareer1Title}
+        handleCareer1Description={handleCareer1Description}
+        handleCareer1Salary={handleCareer1Salary}
+        handleCareer1Date={handleCareer1Date}
+        handleCareer1Image={handleCareer1Image}
         handleSave1={handleSave1}
+        showSaveBtn1={showSaveBtn1}
+        showUpdateBtn1={showUpdateBtn1}
+        handleUpdate1={handleUpdate1}
       ></CareerModal>
     </div>
   );
