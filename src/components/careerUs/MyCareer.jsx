@@ -77,6 +77,9 @@ const MyCareer = () => {
   const handleClose = () => {
     setShowModal(false);
   };
+  function handleDelete() {
+    
+  }
   function handleSave1(e) {
     e.preventDefault();
     if (careerTitle !== "" && careerDescription !== "" && careerDate !== "") {
@@ -142,140 +145,24 @@ const MyCareer = () => {
             },
           }}
         >
-          <SwiperSlide>
+        {careerArray.map((item,index) => (
+            <SwiperSlide key={index}>
+
             <CareerCard
               data={{
-                imgSrc: img1,
-                salary: "####",
-                title: "Full Stack Lead Developer",
-                desc: " Ruralnet, Inc. Central Visayas   ",
-                date: "  Posted on 20-Jul-23 ",
+                imgSrc: "",
+                salary: item.salary,
+                title: item.title,
+                desc: item.description,
+                date: item.date,
+                id: item.id
+                
               }}
+              setCareerArray = {setCareerArray}
             />
           </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img2,
-                salary: "####",
-                title: "Senior Web Full-Stack Developer",
-                desc: " iRely - Philippines, Inc. National Capital Reg ",
-                date: "  Posted on 19-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img3,
-                salary: "####",
-                title: "PHP Full Stack Developer with Azure Experience",
-                desc: " DXC Technology National Capital Reg  ",
-                date: "Posted on 17-Jul-23 ",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img4,
-                salary: "####",
-                title: "Full Stack Developer (Python/Django)",
-                desc: "SM Supermalls (Shopping Center  Management Corporation) National Capital Reg ",
-                date: "Posted on 19-Jul-23  ",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img5,
-                salary: "####",
-                title: "Front-End Web Developer | WFH | NIGHT SHIFT",
-                desc: " KMC Solutions Makati City  ",
-                date: "Posted on 11-Jul-23 ",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img6,
-                salary: "PHP 78,000 - PHP 87,000",
-                title:
-                  " Frontend Developer (Shopify , HTML, SCSS, JavaScript) (WFH - Work From Home)",
-                desc: " Ehrlich IT Services, Inc. Multiple work locations ",
-                date: "Posted on 10-Jul-23 ",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img7,
-                salary: "####",
-                title: "Full Stack Developer",
-                desc: " Asialink Finance Corporation National Capital Reg  ",
-                date: "Posted on 4-Jul-23 ",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img8,
-                salary: "####",
-                title:
-                  "Senior Front End Developer (Angular and AWS) - Full Time Work from Home",
-                desc: " Unient Multiple work locations ",
-                date: " Posted on 29-Jun-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img9,
-                salary: "####",
-                title: "Back-End Developer",
-                desc: "C3 Interactive Manila, Inc. Makati City",
-                date: "  Posted on 17-Jul-23",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img10,
-                salary: "PHP 100,000 - PHP 120,000",
-                title: ".NET Back End Senior Developer",
-                desc: " XAM Consulting National Capital Reg ",
-                date: "Posted on 17-Jul-23 ",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img11,
-                salary: "PHP 50,000 - PHP 70,000",
-                title: "Back End Developer (Taguig)",
-                desc: "Information Professionals, Inc. ",
-                date: " Posted 45 minutes ago",
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CareerCard
-              data={{
-                imgSrc: img12,
-                salary: "####",
-                title: "Back End Developer | Temporary WFH Assignment*",
-                desc: " Accenture National Capital Reg ",
-                date: " Posted 17 hours ago",
-              }}
-            />
-          </SwiperSlide>
+        ))}
+         
         </Swiper>
       </div>
       <div>
