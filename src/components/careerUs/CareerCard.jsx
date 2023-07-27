@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button} from 'react-bootstrap';
 
 const CareerCard = props => {
-    let {imgSrc, title, desc, price, date } = props.data;
+    let {imgSrc, title, desc, salary, date } = props.data;
     return (
         <Card className="p-0 overflow-hidden h-100 shadow" >
             <div className='overflow-hidden rounded p-0 bg-light'>
@@ -14,7 +14,7 @@ const CareerCard = props => {
             <Card.Body className="text-center">
                  <Card.Title>{title}</Card.Title>
                  <Card.Title><h6>{desc}</h6></Card.Title>
-                <Card.Title className="display-6 fs-6">{price}</Card.Title>
+                <Card.Title className="display-6 fs-6">{salary}</Card.Title>
                 <Card.Title><h6>{date}</h6></Card.Title>
 
                 
