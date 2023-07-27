@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ServicesCard from "./ServicesCard";
 import ServicesModal from "./ServicesModal";
+import ServicesIntro from "./ServicesIntro";
 
 function ServicesMain() {
   const servicesData = localStorage.getItem("ServicesDB")
@@ -113,10 +114,8 @@ function ServicesMain() {
         >
           Add Service
         </button>
-        <button type="button" className="btn btn-danger ms-3">
-          Remove Services
-        </button>
       </div>
+      <ServicesIntro/>
       <ServicesModal
         showModal={showModal}
         handleClose={handleClose}

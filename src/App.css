@@ -46,8 +46,14 @@
   font-size: 7rem;
 }
 
+.sloganServices {
+  align-items: center;
+  font-size: 9rem;
+}
+
 .home,
-.about {
+.about,
+.services {
   min-height: 100vh;
 }
 .home div {
