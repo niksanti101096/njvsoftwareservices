@@ -47,7 +47,7 @@ function ServicesModal({
             <div className="form-group">
               <label>Service Image Link</label>
               <input
-                type="text"
+                type="file"
                 className="form-control"
                 value={servicesImage}
                 onChange={handleServiceImage}

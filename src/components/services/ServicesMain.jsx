@@ -10,7 +10,7 @@ function ServicesMain() {
   const [servicesArray, setServicesArray] = useState(servicesData);
   const [servicesTitle, setServicesTitle] = useState("");
   const [servicesDescription, setServicesDescription] = useState("");
-  const [servicesImage, setServicesImage] = useState("");
+  const [servicesImage, setServicesImage] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showSaveBtn, setShowSaveBtn] = useState(true);
   const [showUpdateBtn, setShowUpdateBtn] = useState(false);
@@ -42,7 +42,13 @@ function ServicesMain() {
   }
 
   function handleServiceImage(e) {
-    setServicesImage(e.target.value);
+    // setServicesImage(e.target.value);
+    const fr = new FileReader();
+    fr.readAsDataURL(e.target.files[0]);
+    fr.onload = () => {
+      setServicesImage(fr.result);
+    };
+    console.log(servicesImage)
   }
 
   function handleSave(e) {
