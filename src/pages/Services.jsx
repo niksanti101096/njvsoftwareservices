@@ -3,7 +3,7 @@ import ServicesMain from '../components/services/ServicesMain'
 
 function Services() {
   return (
-    <div className='container mt-7'>
+    <div className=''>
       <ServicesMain></ServicesMain>
     </div>
   )

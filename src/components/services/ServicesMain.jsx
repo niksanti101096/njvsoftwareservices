@@ -106,16 +106,7 @@ function ServicesMain() {
 
   return (
     <div>
-      <div className="text-end">
-        <button
-          type="button"
-          className="btn btn-info"
-          onClick={handleShowModal}
-        >
-          Add Service
-        </button>
-      </div>
-      <ServicesIntro/>
+      <ServicesIntro handleShowModal={handleShowModal}/>
       <ServicesModal
         showModal={showModal}
         handleClose={handleClose}
