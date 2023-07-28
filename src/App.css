@@ -36,6 +36,10 @@
   transform-origin: bottom left;
 }
 
+.row {
+  max-width: 100%;
+}
+
 .sloganHome {
   align-items: center;
   font-size: 5rem;
