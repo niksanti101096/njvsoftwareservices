@@ -3,6 +3,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import Login from "./account/Login";
 import Signup from "./account/Signup";
+import { motion } from "framer-motion";
 
 function MyHeader() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -30,9 +31,15 @@ function MyHeader() {
         className="navbar navbar-expand-lg bg-primary px-5 sticky-top d-flex justify-content-between"
         data-bs-theme="dark"
       >
-        <a href="/" className="navbar-brand">
+        <motion.a
+          href="/"
+          className="navbar-brand"
+          initial={{ y: "-10vh" }}
+          animate={{ y: 0 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+        >
           NJV Software Services
-        </a>
+        </motion.a>
         <div>
           <ul
             className={
@@ -43,56 +50,83 @@ function MyHeader() {
             id="navigation"
           >
             <li className="nav-item">
-              <a className="nav-link hover-underline-animation" href="/aboutUs">
+              <motion.a
+                className="nav-link hover-underline-animation"
+                href="/aboutUs"
+                initial={{ y: "-10vh" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
                 About Us
-              </a>
+              </motion.a>
             </li>
             <li className="nav-item">
-              <a
+              <motion.a
                 className="nav-link hover-underline-animation"
                 href="/services"
+                initial={{ y: "-10vh" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.7, duration: 0.8 }}
               >
                 Services
-              </a>
+              </motion.a>
             </li>
             <li className="nav-item">
-              <a className="nav-link hover-underline-animation" href="/careers">
+              <motion.a
+                className="nav-link hover-underline-animation"
+                href="/careers"
+                initial={{ y: "-10vh" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.9, duration: 1 }}
+              >
                 Careers
-              </a>
+              </motion.a>
             </li>
             <li className="nav-item">
-              <a
+              <motion.a
                 className="nav-link hover-underline-animation"
                 href="/technologies"
+                initial={{ y: "-10vh" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 1.1, duration: 1.2 }}
               >
                 Technologies
-              </a>
+              </motion.a>
             </li>
             <li className="nav-item me-lg-5 me-md-2">
-              <a
+              <motion.a
                 className="nav-link hover-underline-animation"
                 href="/contactUs"
+                initial={{ y: "-10vh" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 1.3, duration: 1.4 }}
               >
                 Contact Us
-              </a>
+              </motion.a>
             </li>
-            <li className="nav-item">
-              <button
-                className="btn btn-primary"
+            <li className="nav-item d-flex align-items-center me-2">
+              <motion.button
+                className="btn btn-outlined-primary btn-sm"
                 type="button"
                 onClick={() => handleOpen("Signup")}
+                initial={{ y: "-10vh" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 1.5, duration: 1.6 }}
               >
                 Signup
-              </button>
+              </motion.button>
             </li>
-            <li className="nav-item">
-              <button
-                className="btn btn-primary"
+            <li className="nav-item d-flex align-items-center">
+              <motion.button
+                className="btn btn-outlined-primary btn-sm"
                 type="button"
                 onClick={() => handleOpen("Login")}
+                initial={{ y: "-10vh" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 1.5, duration: 1.6 }}
               >
                 Login
-              </button>
+              </motion.button>
             </li>
           </ul>
         </div>
@@ -102,8 +136,14 @@ function MyHeader() {
           </i>
         </div>
       </nav>
-      <Login showModalLogin={showModalLogin} handleCloseLogin={handleCloseLogin} />
-      <Signup showModalSignup={showModalSignup} handleCloseSignup={handleCloseSignup} />
+      <Login
+        showModalLogin={showModalLogin}
+        handleCloseLogin={handleCloseLogin}
+      />
+      <Signup
+        showModalSignup={showModalSignup}
+        handleCloseSignup={handleCloseSignup}
+      />
     </>
   );
 }

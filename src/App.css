@@ -8,15 +8,13 @@
 .hover-underline-animation {
   display: inline-block;
   position: relative;
+  color: #fff;
 }
 
 .default-text-color {
   color: rgba(255, 255, 255, 0.75);
 }
 
-.nav-active {
-  color: #fff;
-}
 
 .hover-underline-animation::after {
   content: "";
@@ -133,6 +131,11 @@
 #mobile {
   display: none;
 }
+
+.btn-sm {
+  max-height: 2rem;
+}
+
 
 @media screen and (max-width: 992px) {
   #navigation{

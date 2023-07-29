@@ -6,10 +6,10 @@ function ServicesCard({
   setShowModal,
   setServicesTitle,
   setServicesDescription,
-  setServicesImage,
   setShowSaveBtn,
   setShowUpdateBtn,
-  setIdHolder
+  setIdHolder,
+  setImageHolder
 }) {
   function handleDeleteService(data) {
     const newService = JSON.parse(localStorage.getItem("ServicesDB")).filter(
@@ -25,7 +25,7 @@ function ServicesCard({
     setShowUpdateBtn(true);
     setServicesTitle(data.title);
     setServicesDescription(data.description);
-    setServicesImage(data.image);
+    setImageHolder(data.image);
     setIdHolder(data.id);
   }
 
@@ -34,9 +34,9 @@ function ServicesCard({
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-gap-5">
         {servicesArray.map((item, index) => (
           <div className="col d-flex justify-content-center" key={index}>
-            <div className="card my-5 w-75 rounded-4">
+            <div className="card my-5 w-75 rounded-4 text-white bg-secondary">
               <div className="card-img-top">
-                <img className="w-100 rounded-top-4" src={item.image} alt="" />
+                <img className="w-100 rounded-top-4 bg-light" src={item.image} alt="" />
               </div>
               <div className="card-body">
                 <h5 className="card-title fw-bold">{item.title}</h5>

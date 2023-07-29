@@ -49,7 +49,7 @@ function ServicesModal({
               <input
                 type="file"
                 className="form-control"
-                value={servicesImage}
+                defaultValue={servicesImage}
                 onChange={handleServiceImage}
               />
             </div>
