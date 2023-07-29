@@ -52,12 +52,12 @@ const CareerCard = ({
           <h6>{date}</h6>
         </Card.Title>
       </Card.Body>
-      <Button className="w-100 rounded-0" variant="success">
+      <Button className="w-100 rounded-0 btnApply" >
         Apply Now!
       </Button>
       <Button
-        className="w-100 rounded-0"
-        variant="warning"
+        className="w-100 rounded-0 btnUpdate"
+        //variant="warning"
         onClick={() => handleUpdate(salary, title, desc, date, id)}
       >
         Update

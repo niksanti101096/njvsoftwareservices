@@ -1,8 +1,68 @@
 /* career style */
+* {
+  font-family: 'Times New Roman', Times, serif;
+}
 .fontSlogan {
-    align-items: center;
-    font-size: 3rem;
+    /* align-items: center;
+    font-size: 3rem; */
   }
-.mySwiper {
-  margin-left: 50%;
+.headerCC {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 155px 5px 45px;
+  
+  width: 200%;
+}
+.header1 {
+  font-size: 4.5em;
+  
+}
+.header2 {
+  display: flex;
+  flex-direction: row;
+}
+.imgCC {
+  height: 80vh;
+
+}
+.imgCC2 {
+  height: 80vh;
+  position: absolute;
+  width: 50%;
+  padding: 0 50px 0 0;
+  
+}
+.IconC{
+  height: 20px;
+  width: 70%;
+}
+.btnAdd {
+  background-color: #35A29F;
+  border-radius: 7px 7px 7px 7px;
+  width: 30%;
+  font-size: 1.5em;
+}
+.btnAdd:hover{
+  background: #05BFDB;
+}
+.swiperCCard{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 70vh;
+  width: 190%;
+}
+
+
+/* ============ CareerCard ============= */
+.btnApply {
+  background: #35A29F;
+  color: #E3F2C1;
+}
+.btnUpdate {
+  background: #9BA4B5;
+  color: #E3F2C1;
 }
