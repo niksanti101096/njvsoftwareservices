@@ -121,24 +121,20 @@ const MyCareer = () => {
   }, [careerArray]);
 
   return (
-    <div className=" ">
-      <br /> <br />
+    <div className="container">
       <h1 className="home d-flex flex-column justify-content-center w-50 ms-5 fs-700 fontSlogan">
         Unlock your potential with rewarding career opportunities in the world
         of software services <SouthIcon></SouthIcon>
       </h1>
-      <br />
-      <br />
       <div>
         <h1>
-          {" "}
           Full-Stack Web Developer | Frond-End Web Developer | Back-End Web
           Developer |  SQL Developer | UI/UX Design- Developer | Game Developer | App
           Developer
         </h1>
         <button onClick={handleCareer1Add}>Add</button>
       </div>
-      <div className="container py-4 px-4 d-flex justify-content-center align-items-center ">
+      <div className="container py-4">
         <Swiper
           freeMode={true}
           grabCursor={true}
