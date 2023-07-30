@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ServicesCard from "./ServicesCard";
 import ServicesModal from "./ServicesModal";
+import ServicesIntro from "./ServicesIntro";
 
 function ServicesMain() {
   const servicesData = localStorage.getItem("ServicesDB")
@@ -10,11 +11,12 @@ function ServicesMain() {
   const [servicesArray, setServicesArray] = useState(servicesData);
   const [servicesTitle, setServicesTitle] = useState("");
   const [servicesDescription, setServicesDescription] = useState("");
-  const [servicesImage, setServicesImage] = useState();
+  const [servicesImage, setServicesImage] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showSaveBtn, setShowSaveBtn] = useState(true);
   const [showUpdateBtn, setShowUpdateBtn] = useState(false);
   const [idHolder, setIdHolder] = useState();
+  const [imageHolder, setImageHolder] = useState("");
 
   const inputAddServiceTitle = useRef();
 
@@ -42,21 +44,21 @@ function ServicesMain() {
   }
 
   function handleServiceImage(e) {
-    // setServicesImage(e.target.value);
-    const fr = new FileReader();
-    fr.readAsDataURL(e.target.files[0]);
-    fr.onload = () => {
-      setServicesImage(fr.result);
-    };
-    console.log(servicesImage)
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setServicesImage(reader.result);
+    }
+    reader.readAsDataURL(file);
   }
 
   function handleSave(e) {
     e.preventDefault();
+    console.log(servicesTitle);
     if (
       servicesTitle !== "" &&
-      servicesDescription !== "" &&
-      servicesImage !== ""
+      servicesDescription !== ""
     ) {
       const serviceId = Date.now();
 
@@ -79,19 +81,38 @@ function ServicesMain() {
     e.preventDefault();
     if (
       servicesTitle !== "" &&
-      servicesDescription !== "" &&
-      servicesImage !== ""
+      servicesDescription !== ""
     ) {
-      const newService = {
-        id: idHolder,
-        title: servicesTitle,
-        description: servicesDescription,
-        image: servicesImage,
-      };
-      setServicesArray([
-        ...servicesArray.filter((service) => service.id !== idHolder),
-        newService,
-      ]);
+      if (servicesImage === "") {
+        const updateData = servicesArray.map((item) => {
+          if (item.id === idHolder) {
+            return {
+              ...item,
+              title: servicesTitle,
+              description: servicesDescription,
+              image: imageHolder,
+            };
+          } else {
+            return item;
+          }
+        });
+        setServicesArray(updateData);
+      } else {
+        const updateData = servicesArray.map((item) => {
+          if (item.id === idHolder) {
+            return {
+              ...item,
+              title: servicesTitle,
+              description: servicesDescription,
+              image: servicesImage,
+            };
+          } else {
+            return item;
+          }
+        });
+        setServicesArray(updateData);
+      }
+      
       setServicesTitle("");
       setServicesDescription("");
       setServicesImage("");
@@ -105,18 +126,7 @@ function ServicesMain() {
 
   return (
     <div>
-      <div className="text-end">
-        <button
-          type="button"
-          className="btn btn-info"
-          onClick={handleShowModal}
-        >
-          Add Service
-        </button>
-        <button type="button" className="btn btn-danger ms-3">
-          Remove Services
-        </button>
-      </div>
+      <ServicesIntro handleShowModal={handleShowModal} />
       <ServicesModal
         showModal={showModal}
         handleClose={handleClose}
@@ -138,10 +148,10 @@ function ServicesMain() {
         setShowModal={setShowModal}
         setServicesTitle={setServicesTitle}
         setServicesDescription={setServicesDescription}
-        setServicesImage={setServicesImage}
         setShowSaveBtn={setShowSaveBtn}
         setShowUpdateBtn={setShowUpdateBtn}
         setIdHolder={setIdHolder}
+        setImageHolder={setImageHolder}
       />
     </div>
   );

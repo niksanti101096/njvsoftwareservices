@@ -8,15 +8,13 @@
 .hover-underline-animation {
   display: inline-block;
   position: relative;
+  color: #fff;
 }
 
 .default-text-color {
   color: rgba(255, 255, 255, 0.75);
 }
 
-.nav-active {
-  color: #fff;
-}
 
 .hover-underline-animation::after {
   content: "";
@@ -36,6 +34,10 @@
   transform-origin: bottom left;
 }
 
+.row {
+  max-width: 100%;
+}
+
 .sloganHome {
   align-items: center;
   font-size: 5rem;
@@ -46,9 +48,21 @@
   font-size: 7rem;
 }
 
+.sloganServices {
+  position: absolute;
+  left: 5vw;
+  top: 50vh;
+  font-size: 9rem;
+}
+
 .home,
-.about {
+.about,
+.services {
   min-height: 100vh;
+}
+.services {
+  background-image: url("https://wallpaper-house.com/data/out/8/wallpaper2you_258947.jpg");
+  background-size: cover;
 }
 .home div {
   line-height: 6rem;
@@ -117,6 +131,11 @@
 #mobile {
   display: none;
 }
+
+.btn-sm {
+  max-height: 2rem;
+}
+
 
 @media screen and (max-width: 992px) {
   #navigation{

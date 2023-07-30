@@ -2,7 +2,6 @@ import React from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button } from "react-bootstrap";
-import { Description } from "@mui/icons-material";
 
 const CareerCard = ({
   salary,
