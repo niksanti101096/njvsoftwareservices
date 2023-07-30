@@ -47,7 +47,6 @@ import img28 from "./img/img28.jpg";
 import carUP from "./img/carUP.png";
 import sftware from "./img/sftware.png";
 
-
 const MyCareer = () => {
   const careerData = localStorage.getItem("Career1DB")
     ? JSON.parse(localStorage.getItem("Career1DB"))
@@ -62,6 +61,7 @@ const MyCareer = () => {
   const [careerIdHolder, setCareerIdHolder] = useState();
   const [showSaveBtn1, setShowSaveBtn1] = useState(true);
   const [showUpdateBtn1, setShowUpdateBtn1] = useState(false);
+  const [imageHolder, setImageHolder] = useState("");
 
   const [showModal, setShowModal] = useState(false);
 
@@ -87,7 +87,13 @@ const MyCareer = () => {
     setCareerDate(e.target.value);
   }
   function handleCareer1Image(e) {
-    setCareerImage(e.target.value);
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setCareerImage(reader.result);
+    };
+    reader.readAsDataURL(file);
   }
   const handleClose = () => {
     setShowModal(false);
@@ -95,20 +101,42 @@ const MyCareer = () => {
   function handleUpdate1(e) {
     e.preventDefault();
     if (careerTitle !== "" && careerDescription !== "" && careerDate !== "") {
-      const newData = {
-        id: careerIdHolder,
-        title: careerTitle,
-        description: careerDescription,
-        salary: careerSalary,
-        date: careerDate,
-        image: careerImage,
-      };
-      setCareerArray([
-        ...careerArray.filter((career) => career.id !== careerIdHolder),
-        newData,
-      ]);
+      if (careerImage === "") {
+        const updateData = careerArray.map((item) => {
+          if (item.id === careerIdHolder) {
+            return {
+              ...item,
+              title: careerTitle,
+              description: careerDescription,
+              salary: careerSalary,
+              date: careerDate,
+              image: imageHolder,
+            };
+          } else {
+            return item;
+          }
+        });
+        setCareerArray(updateData);
+      } else {
+        const updateData = careerArray.map((item) => {
+          if (item.id === careerIdHolder) {
+            return {
+              ...item,
+              title: careerTitle,
+              description: careerDescription,
+              salary: careerSalary,
+              date: careerDate,
+              image: careerImage,
+            };
+          } else {
+            return item;
+          }
+        });
+        setCareerArray(updateData);
+      }
+
       setShowModal(false);
-     
+
       setCareerTitle("");
       setCareerDate("");
       setCareerSalary("");
@@ -151,108 +179,106 @@ const MyCareer = () => {
   useEffect(() => {
     localStorage.setItem("Career1DB", JSON.stringify(careerArray));
   }, [careerArray]);
-  useEffect(() => {
-    localStorage.setItem("Career1DB", JSON.stringify(careerArray));
-  }, [careerArray]);
 
   return (
     <div className=" ">
-        <br/> 
+      <br />
       <div className="home headerCC ms-50 fs-700">
-           <div > 
-                <h1 className="header1" >
-                Unlock Your Potential, Embrace Infinite Possibilities:
-                 Build Your Future with Our Software Services.       
-                    <SouthIcon>
-                        </SouthIcon>               
-                </h1>
-            </div>
-            <div >
-                <img src={carUP} alt="Photo" className="imgCC" /> 
-                
-            </div>
+        <div>
+          <h1 className="header1">
+            Unlock Your Potential, Embrace Infinite Possibilities: Build Your
+            Future with Our Software Services.
+            <SouthIcon></SouthIcon>
+          </h1>
+        </div>
+        <div>
+          <img src={carUP} alt="Photo" className="imgCC" />
+        </div>
       </div>
-          <br/>
+      <br />
       <div className="header2">
-          <div>
-              <h1>       
-              Full-Stack Web Developer | Frond-End Web Developer | Back-End Web
-              Developer |  SQL Developer | UI/UX Design- Developer | Game Developer | App
-              Developer 
-              </h1>
-            <button onClick={handleCareer1Add} className=" btnAdd" >Add</button>  
-          </div>
-          <div>
-            <img src={sftware} alt="Photo" className="imgCC2" /> 
-          </div>
+        <div>
+          <h1>
+            Full-Stack Web Developer | Frond-End Web Developer | Back-End Web
+            Developer | SQL Developer | UI/UX Design- Developer | Game Developer
+            | App Developer
+          </h1>
+          <button onClick={handleCareer1Add} className=" btnAdd">
+            Add
+          </button>
+        </div>
+        <div>
+          <img src={sftware} alt="Photo" className="imgCC2" />
+        </div>
       </div>
-    <div className="container">
-      <h1 className="home d-flex flex-column justify-content-center w-50 ms-5 fs-700 fontSlogan">
-        Unlock your potential with rewarding career opportunities in the world
-        of software services <SouthIcon></SouthIcon>
-      </h1>
-      <div>
-        <h1>
-          Full-Stack Web Developer | Frond-End Web Developer | Back-End Web
-          Developer |  SQL Developer | UI/UX Design- Developer | Game Developer | App
-          Developer
+      <div className="container">
+        <h1 className="home d-flex flex-column justify-content-center w-50 ms-5 fs-700 fontSlogan">
+          Unlock your potential with rewarding career opportunities in the world
+          of software services <SouthIcon></SouthIcon>
         </h1>
-        <button onClick={handleCareer1Add}>Add</button>
-      </div>
-      <div className="container py-4">
-        <Swiper
-          freeMode={true}
-          grabCursor={true}
-          modules={[]}
-          className="mySwiper"
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            480: {
-              slidesPerView: 2,
-              spaceBetween: 10,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 15,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 15,
-            },
-            1280: {
-              slidesPerView: 4,
-              spaceBetween: 30,
-            },
-          }}
-        >
-          {careerArray.map((item, index) => (
-            <SwiperSlide key={index}>
-              <CareerCard
-                salary={item.salary}
-                title={item.title}
-                desc={item.description}
-                date={item.date}
-                id={item.id}
-                setCareerArray={setCareerArray}
-                setCareerIdHolder={setCareerIdHolder}
-                setCareerTitle={setCareerTitle}
-                setCareerSalary={setCareerSalary}
-                setCareerDate={setCareerDate}
-                setCareerDescription={setCareerDescription}
-                setShowModal={setShowModal}
-                setShowSaveBtn1={setShowSaveBtn1}
-                setShowUpdateBtn1={setShowUpdateBtn1}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div>
+          <h1>
+            Full-Stack Web Developer | Frond-End Web Developer | Back-End Web
+            Developer | SQL Developer | UI/UX Design- Developer | Game Developer
+            | App Developer
+          </h1>
+          <button onClick={handleCareer1Add}>Add</button>
+        </div>
+        <div className="container py-4">
+          <Swiper
+            freeMode={true}
+            grabCursor={true}
+            modules={[]}
+            className="mySwiper"
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              480: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 15,
+              },
+              1280: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+              },
+            }}
+          >
+            {careerArray.map((item, index) => (
+              <SwiperSlide key={index}>
+                <CareerCard
+                  salary={item.salary}
+                  title={item.title}
+                  desc={item.description}
+                  date={item.date}
+                  id={item.id}
+                  image={item.image}
+                  setCareerArray={setCareerArray}
+                  setCareerIdHolder={setCareerIdHolder}
+                  setCareerTitle={setCareerTitle}
+                  setCareerSalary={setCareerSalary}
+                  setCareerDate={setCareerDate}
+                  setCareerDescription={setCareerDescription}
+                  setShowModal={setShowModal}
+                  setShowSaveBtn1={setShowSaveBtn1}
+                  setShowUpdateBtn1={setShowUpdateBtn1}
+                  setImageHolder={setImageHolder}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      </div>
-     
-       {/*----------------- Call for Modal-------- */}
+        {/*----------------- Call for Modal-------- */}
         <CareerModal
           showModal={showModal}
           handleClose={handleClose}
@@ -271,8 +297,8 @@ const MyCareer = () => {
           showUpdateBtn1={showUpdateBtn1}
           handleUpdate1={handleUpdate1}
         ></CareerModal>
+      </div>
     </div>
-  </div>
   );
 };
 

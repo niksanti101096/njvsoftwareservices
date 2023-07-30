@@ -9,6 +9,7 @@ const CareerCard = ({
   desc,
   date,
   id,
+  image,
   setCareerArray,
   setCareerIdHolder,
   setCareerTitle,
@@ -17,7 +18,8 @@ const CareerCard = ({
   setCareerDescription,
   setShowModal,
   setShowSaveBtn1,
-  setShowUpdateBtn1
+  setShowUpdateBtn1,
+  setImageHolder
 }) => {
   function handleDelete(id) {
     const career = JSON.parse(localStorage.getItem("Career1DB")).filter(
@@ -26,7 +28,7 @@ const CareerCard = ({
     setCareerArray(career);
     localStorage.setItem("Career1DB", JSON.stringify(career));
   }
-  function handleUpdate(salary, title, desc, date, id) {
+  function handleUpdate(salary, title, desc, date, id, image) {
     setShowModal(true)
     setCareerTitle(title)
     setCareerDate(date)
@@ -35,11 +37,12 @@ const CareerCard = ({
     setCareerIdHolder(id)
     setShowSaveBtn1(false)
     setShowUpdateBtn1(true)
+    setImageHolder(image)
   }
   return (
     <Card className="p-0 overflow-hidden h-100 shadow">
       <div className="overflow-hidden rounded p-0 bg-light">
-        <Card.Img variant="top" />
+        <Card.Img variant="top" src={image}/>
       </div>
       <Card.Body className="text-center">
         <Card.Title>{title}</Card.Title>
@@ -57,7 +60,7 @@ const CareerCard = ({
       <Button
         className="w-100 rounded-0 btnUpdate"
         //variant="warning"
-        onClick={() => handleUpdate(salary, title, desc, date, id)}
+        onClick={() => handleUpdate(salary, title, desc, date, id, image)}
       >
         Update
       </Button>

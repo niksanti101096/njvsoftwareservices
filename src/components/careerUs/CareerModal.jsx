@@ -62,7 +62,7 @@ const CareerModal = ({
             </div>
             <div className="form-group">
               <label>Service Image Link</label>
-              <input type="file" className="form-control" value={careerImage} onChange={handleCareer1Image} />
+              <input type="file" className="form-control" defaultValue={careerImage} onChange={handleCareer1Image} />
             </div>
           </form>
         </Modal.Body>

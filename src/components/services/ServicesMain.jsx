@@ -49,17 +49,14 @@ function ServicesMain() {
 
     reader.onload = () => {
       setServicesImage(reader.result);
-    }
+    };
     reader.readAsDataURL(file);
   }
 
   function handleSave(e) {
     e.preventDefault();
     console.log(servicesTitle);
-    if (
-      servicesTitle !== "" &&
-      servicesDescription !== ""
-    ) {
+    if (servicesTitle !== "" && servicesDescription !== "") {
       const serviceId = Date.now();
 
       const newService = {
@@ -79,10 +76,7 @@ function ServicesMain() {
   }
   function handleUpdate(e) {
     e.preventDefault();
-    if (
-      servicesTitle !== "" &&
-      servicesDescription !== ""
-    ) {
+    if (servicesTitle !== "" && servicesDescription !== "") {
       if (servicesImage === "") {
         const updateData = servicesArray.map((item) => {
           if (item.id === idHolder) {
@@ -112,7 +106,7 @@ function ServicesMain() {
         });
         setServicesArray(updateData);
       }
-      
+
       setServicesTitle("");
       setServicesDescription("");
       setServicesImage("");
