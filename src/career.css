@@ -44,10 +44,12 @@
 }
  /* ============== window2 ============= */
  .mainbg2 {
-  /* background-image: url(https://wallpapercave.com/wp/wp7098401.jpg); */
-  background-image: url(./components/careerUs/img/bg3.png);
+   background-image: url(http://bannerassociates.com/images/uploads/Edited_Career.jpg); 
+  /* background-image: url(./components/careerUs/img/bg3.png); */
   background-size: cover;
-  padding: 0;
+  padding-top: 45px;
+ 
+
 }
 /* .imgCC2 {
   height: 60vh;
