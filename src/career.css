@@ -1,44 +1,65 @@
 /* career style */
 * {
-  font-family: 'Times New Roman', Times, serif;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.fontSlogan {
+/* ============= window1 ============ */
+.mainbg1 {
+  background-image: url(./components/careerUs/img/bg2.png);
+  background-size: cover;
+  max-height: 80vh;
+  padding-top: 0%;
+  border: 0;
+  margin: 0;
+  
 
-    /* align-items: center;
-    font-size: 3rem; */
-  }
+}
 .headerCC {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 5px 155px 5px 45px;
-  
-  width: 200%;
+  padding: 0 5px 0px 5px; 
+  min-height: 100vh;
+  line-height: 6rem;
+ 
 }
 .header1 {
   font-size: 4.5em;
+  color: #FCF8E8;
   
+}
+.spn1{
+  color: #E8FFCE;
 }
 .header2 {
+  
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  color: #FCF8E8;
 }
 .imgCC {
-  height: 80vh;
+
+  height: 90vh;
 
 }
-.imgCC2 {
-  height: 80vh;
+ /* ============== window2 ============= */
+ .mainbg2 {
+  /* background-image: url(https://wallpapercave.com/wp/wp7098401.jpg); */
+  background-image: url(./components/careerUs/img/bg3.png);
+  background-size: cover;
+  padding: 0;
+}
+/* .imgCC2 {
+  height: 60vh;
   position: absolute;
   width: 50%;
-  padding: 0 50px 0 0;
+  padding: 0 0 0 5px;
   
-}
-.IconC{
+} */
+/* .IconC{
   height: 20px;
   width: 70%;
-}
+} */
 .btnAdd {
   background-color: #35A29F;
   border-radius: 7px 7px 7px 7px;

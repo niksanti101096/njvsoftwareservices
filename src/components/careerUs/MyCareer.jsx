@@ -183,120 +183,106 @@ const MyCareer = () => {
   return (
     <div className=" ">
       <br />
-      <div className="home headerCC ms-50 fs-700">
-        <div>
-          <h1 className="header1">
-            Unlock Your Potential, Embrace Infinite Possibilities: Build Your
-            Future with Our Software Services.
-            <SouthIcon></SouthIcon>
-          </h1>
-        </div>
-        <div>
-          <img src={carUP} alt="Photo" className="imgCC" />
-        </div>
-      </div>
-      <br />
-      <div className="header2">
-        <div>
-          <h1>
-            Full-Stack Web Developer | Frond-End Web Developer | Back-End Web
-            Developer | SQL Developer | UI/UX Design- Developer | Game Developer
-            | App Developer
-          </h1>
-          <button onClick={handleCareer1Add} className=" btnAdd">
-            Add
-          </button>
-        </div>
-        <div>
-          <img src={sftware} alt="Photo" className="imgCC2" />
-        </div>
-      </div>
       <div className="container">
-        <h1 className="home d-flex flex-column justify-content-center w-50 ms-5 fs-700 fontSlogan">
-          Unlock your potential with rewarding career opportunities in the world
-          of software services <SouthIcon></SouthIcon>
-        </h1>
-        <div>
-          <h1>
-            Full-Stack Web Developer | Frond-End Web Developer | Back-End Web
-            Developer | SQL Developer | UI/UX Design- Developer | Game Developer
-            | App Developer
-          </h1>
-          <button onClick={handleCareer1Add}>Add</button>
-        </div>
-        <div className="container py-4">
-          <Swiper
-            freeMode={true}
-            grabCursor={true}
-            modules={[]}
-            className="mySwiper"
-            breakpoints={{
-              0: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-              },
-              480: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 15,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 15,
-              },
-              1280: {
-                slidesPerView: 4,
-                spaceBetween: 30,
-              },
-            }}
-          >
-            {careerArray.map((item, index) => (
-              <SwiperSlide key={index}>
-                <CareerCard
-                  salary={item.salary}
-                  title={item.title}
-                  desc={item.description}
-                  date={item.date}
-                  id={item.id}
-                  image={item.image}
-                  setCareerArray={setCareerArray}
-                  setCareerIdHolder={setCareerIdHolder}
-                  setCareerTitle={setCareerTitle}
-                  setCareerSalary={setCareerSalary}
-                  setCareerDate={setCareerDate}
-                  setCareerDescription={setCareerDescription}
-                  setShowModal={setShowModal}
-                  setShowSaveBtn1={setShowSaveBtn1}
-                  setShowUpdateBtn1={setShowUpdateBtn1}
-                  setImageHolder={setImageHolder}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        
+        <div className="headerCC mainbg1">
+            <div className=" w-50 ms-3 fs-700 fontSlogan">
+              <h1 className="header1">
+                Unlock Your Potential, Embrace Infinite Possibilities:
+              <span className="spn1"> Build Your Future with Our Software Services.</span> 
+                <SouthIcon></SouthIcon>
+              </h1>
+            </div>
+            <div className="imgCC">
+               <img src={carUP} alt="" className="imgCC" />
+            </div>
+
         </div>
 
-        {/*----------------- Call for Modal-------- */}
-        <CareerModal
-          showModal={showModal}
-          handleClose={handleClose}
-          careerSalary={careerSalary}
-          careerDate={careerDate}
-          careerTitle={careerTitle}
-          careerDescription={careerDescription}
-          careerImage={careerImage}
-          handleCareer1Title={handleCareer1Title}
-          handleCareer1Description={handleCareer1Description}
-          handleCareer1Salary={handleCareer1Salary}
-          handleCareer1Date={handleCareer1Date}
-          handleCareer1Image={handleCareer1Image}
-          handleSave1={handleSave1}
-          showSaveBtn1={showSaveBtn1}
-          showUpdateBtn1={showUpdateBtn1}
-          handleUpdate1={handleUpdate1}
-        ></CareerModal>
+        <div className="mainbg2">
+            <div className="">
+              <h1 className="header2">
+                Full-Stack Web Developer | Frond-End Web Developer | Back-End Web
+                Developer |  SQL Developer | UI/UX Design- Developer | Game Developer | App
+                Developer
+              </h1>
+              <button onClick={handleCareer1Add} className="btnAdd">Add</button>
+            </div>
+
+            <div className=" py-1">
+              <Swiper
+                freeMode={true}
+                grabCursor={true}
+                modules={[]}
+                className="mySwiper"
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                  },
+                  480: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                  },
+                  768: {
+                    slidesPerView: 3,
+                    spaceBetween: 15,
+                  },
+                  1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 15,
+                  },
+                  1280: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                  },
+                }}
+              >
+                {careerArray.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <CareerCard
+                      salary={item.salary}
+                      title={item.title}
+                      desc={item.description}
+                      date={item.date}
+                      id={item.id}
+                      image={item.image}
+                      setCareerArray={setCareerArray}
+                      setCareerIdHolder={setCareerIdHolder}
+                      setCareerTitle={setCareerTitle}
+                      setCareerSalary={setCareerSalary}
+                      setCareerDate={setCareerDate}
+                      setCareerDescription={setCareerDescription}
+                      setShowModal={setShowModal}
+                      setShowSaveBtn1={setShowSaveBtn1}
+                      setShowUpdateBtn1={setShowUpdateBtn1}
+                      setImageHolder={setImageHolder}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            {/*----------------- Call for Modal-------- */}
+            <CareerModal
+              showModal={showModal}
+              handleClose={handleClose}
+              careerSalary={careerSalary}
+              careerDate={careerDate}
+              careerTitle={careerTitle}
+              careerDescription={careerDescription}
+              careerImage={careerImage}
+              handleCareer1Title={handleCareer1Title}
+              handleCareer1Description={handleCareer1Description}
+              handleCareer1Salary={handleCareer1Salary}
+              handleCareer1Date={handleCareer1Date}
+              handleCareer1Image={handleCareer1Image}
+              handleSave1={handleSave1}
+              showSaveBtn1={showSaveBtn1}
+              showUpdateBtn1={showUpdateBtn1}
+              handleUpdate1={handleUpdate1}
+            ></CareerModal>
+        </div>
       </div>
     </div>
   );
