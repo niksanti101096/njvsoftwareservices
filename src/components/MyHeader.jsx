@@ -6,6 +6,10 @@ import Signup from "./account/Signup";
 import { motion } from "framer-motion";
 
 function MyHeader() {
+  const role = sessionStorage.getItem("CurrentAccount")
+    ? JSON.parse(sessionStorage.getItem("CurrentAccount"))
+    : [{ fullname: "User", admin: false }];
+
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [showModalLogin, setShowModalLogin] = useState(false);
   const [showModalSignup, setShowModalSignup] = useState(false);
@@ -104,30 +108,47 @@ function MyHeader() {
                 Contact Us
               </motion.a>
             </li>
-            <li className="nav-item d-flex align-items-center me-2">
-              <motion.button
-                className="btn btn-outlined-primary btn-sm"
-                type="button"
-                onClick={() => handleOpen("Signup")}
-                initial={{ y: "-10vh" }}
-                animate={{ y: 0 }}
-                transition={{ delay: 1.5, duration: 1.6 }}
-              >
-                Signup
-              </motion.button>
-            </li>
-            <li className="nav-item d-flex align-items-center">
-              <motion.button
-                className="btn btn-outlined-primary btn-sm"
-                type="button"
-                onClick={() => handleOpen("Login")}
-                initial={{ y: "-10vh" }}
-                animate={{ y: 0 }}
-                transition={{ delay: 1.5, duration: 1.6 }}
-              >
-                Login
-              </motion.button>
-            </li>
+            {role.admin && (
+              <li className="nav-item">
+                <motion.a
+                  className="nav-link hover-underline-animation"
+                  href="/admin"
+                  initial={{ y: "-10vh" }}
+                  animate={{ y: 0 }}
+                  transition={{ delay: 1.5, duration: 1.6 }}
+                >
+                  {role.fullname}
+                </motion.a>
+              </li>
+            )}
+            {!role.admin && (
+              <li className="nav-item d-flex align-items-center me-2">
+                <motion.button
+                  className="btn btn-outlined-primary btn-sm"
+                  type="button"
+                  onClick={() => handleOpen("Signup")}
+                  initial={{ y: "-10vh" }}
+                  animate={{ y: 0 }}
+                  transition={{ delay: 1.5, duration: 1.6 }}
+                >
+                  Signup
+                </motion.button>
+              </li>
+            )}
+            {!role.admin && (
+              <li className="nav-item d-flex align-items-center">
+                <motion.button
+                  className="btn btn-outlined-primary btn-sm"
+                  type="button"
+                  onClick={() => handleOpen("Login")}
+                  initial={{ y: "-10vh" }}
+                  animate={{ y: 0 }}
+                  transition={{ delay: 1.5, duration: 1.6 }}
+                >
+                  Login
+                </motion.button>
+              </li>
+            )}
           </ul>
         </div>
         <div type="button" className="text-dark" id="mobile">
@@ -136,6 +157,7 @@ function MyHeader() {
           </i>
         </div>
       </nav>
+
       <Login
         showModalLogin={showModalLogin}
         handleCloseLogin={handleCloseLogin}
