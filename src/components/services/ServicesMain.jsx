@@ -55,7 +55,6 @@ function ServicesMain() {
 
   function handleSave(e) {
     e.preventDefault();
-    console.log(servicesTitle);
     if (servicesTitle !== "" && servicesDescription !== "") {
       const serviceId = Date.now();
 

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 
 function ServicesCard({
@@ -9,7 +10,7 @@ function ServicesCard({
   setShowSaveBtn,
   setShowUpdateBtn,
   setIdHolder,
-  setImageHolder
+  setImageHolder,
 }) {
   function handleDeleteService(data) {
     const newService = JSON.parse(localStorage.getItem("ServicesDB")).filter(
@@ -30,13 +31,22 @@ function ServicesCard({
   }
 
   return (
-    <>
+    <div className="container">
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-gap-5">
         {servicesArray.map((item, index) => (
           <div className="col d-flex justify-content-center" key={index}>
-            <div className="card my-5 w-75 rounded-4 text-white bg-secondary">
+            <motion.div
+              className="card my-5 w-75 rounded-4 text-white bg-secondary"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.5 }}
+            >
               <div className="card-img-top">
-                <img className="w-100 rounded-top-4 bg-light" src={item.image} alt="" />
+                <img
+                  className="w-100 rounded-top-4 bg-light"
+                  src={item.image}
+                  alt=""
+                />
               </div>
               <div className="card-body">
                 <h5 className="card-title fw-bold">{item.title}</h5>
@@ -56,11 +66,11 @@ function ServicesCard({
                   Delete Service
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

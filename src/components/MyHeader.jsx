@@ -28,7 +28,7 @@ function MyHeader() {
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg bg-primary px-5 sticky-top d-flex justify-content-between"
+        className="navbar navbar-expand-lg bg-primary px-5 fixed-top d-flex justify-content-between"
         data-bs-theme="dark"
       >
         <motion.a

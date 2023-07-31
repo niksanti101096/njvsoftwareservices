@@ -3,7 +3,7 @@ import ContactMain from '../components/contactUs/ConctactMain'
 
 function Contact() {
   return (
-    <div className="d-flex align-items-center">
+    <div>
       <ContactMain/>
     </div>
   )

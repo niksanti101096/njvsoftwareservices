@@ -3,6 +3,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function Login({ showModalLogin, handleCloseLogin }) {
+  const data = localStorage.getItem("AccountsDB")
+    ? JSON.parse(localStorage.getItem("AccountsDB"))
+    : [];
+  const [accountsData, setAccountsData] = useState(data);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,6 +16,23 @@ function Login({ showModalLogin, handleCloseLogin }) {
 
   function handlePassword(e) {
     setPassword(e.target.value);
+  }
+
+  function handleLogin(e) {
+    accountsData.forEach((data) => {
+      console.log(data.username);
+      console.log(username)
+      if (data.username === username && data.password === password) {
+        sessionStorage.clear("CurrentAccount");
+        sessionStorage.setItem("CurrentAccount", JSON.stringify(data));
+        handleCloseLogin();
+        alert("Successfully logged in");
+        window.location.reload();
+      } else {
+        console.log(data);
+        alert("Invalid")
+      }
+    });
   }
 
   return (
@@ -47,7 +68,9 @@ function Login({ showModalLogin, handleCloseLogin }) {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary">Login</Button>
+          <Button variant="secondary" onClick={handleLogin}>
+            Login
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

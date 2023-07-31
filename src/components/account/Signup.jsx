@@ -3,6 +3,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function Signup({ showModalSignup, handleCloseSignup }) {
+  const data = localStorage.getItem("AccountsDB")
+    ? JSON.parse(localStorage.getItem("AccountsDB"))
+    : [];
+  const accountsData = useState(data);
   const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +21,45 @@ function Signup({ showModalSignup, handleCloseSignup }) {
 
   function handlePassword(e) {
     setPassword(e.target.value);
+  }
+
+  function handleSignup(e) {
+    e.preventDefault();
+    if (fullname !== "" && username !== "" && password !== "") {
+      alert("hoy");
+      if (accountsData.length > 0) {
+        accountsData.map((item) => {
+          if (item.username === username) {
+            alert("Username already in use!");
+          } else {
+            const newAccount = {
+              fullname: fullname,
+              username: username,
+              password: password,
+              admin: true,
+            };
+            localStorage.setItem(
+              "AccountsDB",
+              JSON.stringify([...data, newAccount])
+            );
+            handleCloseSignup();
+          }
+          return null;
+        });
+      } else {
+        const newAccount = {
+          fullname: fullname,
+          username: username,
+          password: password,
+          admin: true,
+        };
+        localStorage.setItem(
+          "AccountsDB",
+          JSON.stringify([...data, newAccount])
+        );
+        handleCloseSignup();
+      }
+    }
   }
   return (
     <>
@@ -60,7 +103,9 @@ function Signup({ showModalSignup, handleCloseSignup }) {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary">Login</Button>
+          <Button variant="secondary" onClick={handleSignup}>
+            Signup
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
