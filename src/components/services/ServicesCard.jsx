@@ -12,6 +12,10 @@ function ServicesCard({
   setIdHolder,
   setImageHolder,
 }) {
+  const role = sessionStorage.getItem("CurrentAccount")
+    ? JSON.parse(sessionStorage.getItem("CurrentAccount"))
+    : [{ fullname: "User", admin: false }];
+
   function handleDeleteService(data) {
     const newService = JSON.parse(localStorage.getItem("ServicesDB")).filter(
       (item) => data.id !== item.id
@@ -52,7 +56,8 @@ function ServicesCard({
                 <h5 className="card-title fw-bold">{item.title}</h5>
                 <p className="card-text">{item.description}</p>
               </div>
-              <div className="card-body d-flex justify-content-between">
+              {role.admin && (
+                <div className="card-body d-flex justify-content-between">
                 <button
                   className="btn btn-warning btn-sm"
                   onClick={() => handleUpdateService(item)}
@@ -66,6 +71,7 @@ function ServicesCard({
                   Delete Service
                 </button>
               </div>
+              )}
             </motion.div>
           </div>
         ))}

@@ -1,12 +1,45 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ForumIcon from "@mui/icons-material/Forum";
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from "@mui/icons-material/Send";
 
 function ContactMain() {
+  const data = localStorage.getItem("ContactDB")
+    ? JSON.parse(localStorage.getItem("ContactDB"))
+    : [];
+
+  const [contactArray, setContactArray] = useState(data);
+  const [newContact, setNewContact] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const contactId = Date.now();
+
+    setContactArray([
+      ...contactArray,
+      {
+        id: contactId,
+        name: newContact.name,
+        email: newContact.email,
+        message: newContact.message,
+      },
+    ]);
+    setNewContact({
+      name: "",
+      email: "",
+      message: "",
+    });
+  }
+  useEffect(() => {
+    localStorage.setItem("ContactDB", JSON.stringify(contactArray));
+  }, [contactArray])
   return (
     <div className="contact ps-0 ps-md-5 d-flex align-items-center justify-content-md-start justify-content-center">
-      <form className="py-5 rounded-5 px-3">
+      <form className="py-5 rounded-5 px-3" onSubmit={handleSubmit}>
         <fieldset>
           <motion.legend
             className="mb-5 text-center"
@@ -36,6 +69,11 @@ function ContactMain() {
                 className="form-control"
                 name="contactFullname"
                 placeholder="e.g. John Doe"
+                value={newContact.name}
+                onChange={(e) =>
+                  setNewContact({ ...newContact, name: e.target.value })
+                }
+                required
                 initial={{ x: "-50vw" }}
                 animate={{ x: 0 }}
                 transition={{ duration: 0.8 }}
@@ -56,6 +94,11 @@ function ContactMain() {
                 className="form-control"
                 name="contactEmail"
                 placeholder="johndoe@email.com"
+                value={newContact.email}
+                onChange={(e) =>
+                  setNewContact({ ...newContact, email: e.target.value })
+                }
+                required
                 initial={{ x: "100vw" }}
                 animate={{ x: 0 }}
                 transition={{ duration: 0.8 }}
@@ -78,6 +121,11 @@ function ContactMain() {
                 className="form-control"
                 name="contactEmail"
                 placeholder="Your message here..."
+                value={newContact.message}
+                onChange={(e) =>
+                  setNewContact({ ...newContact, message: e.target.value })
+                }
+                required
                 initial={{ y: "110vh" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8 }}
@@ -92,7 +140,7 @@ function ContactMain() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
             >
-              <SendIcon/>
+              <SendIcon />
             </motion.button>
           </div>
         </fieldset>

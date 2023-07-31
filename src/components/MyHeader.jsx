@@ -3,6 +3,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import Login from "./account/Login";
 import Signup from "./account/Signup";
+import Dropdown from "react-bootstrap/Dropdown";
 import { motion } from "framer-motion";
 
 function MyHeader() {
@@ -28,7 +29,10 @@ function MyHeader() {
       setShowModalSignup(true);
     }
   }
-
+  function handleLogout() {
+    sessionStorage.removeItem("CurrentAccount");
+    window.location.reload();
+  }
   return (
     <>
       <nav
@@ -109,16 +113,23 @@ function MyHeader() {
               </motion.a>
             </li>
             {role.admin && (
-              <li className="nav-item">
-                <motion.a
-                  className="nav-link hover-underline-animation"
-                  href="/admin"
+              <li className="nav-item d-flex align-items-center">
+                <motion.div
+                  className="btn-group"
                   initial={{ y: "-10vh" }}
                   animate={{ y: 0 }}
                   transition={{ delay: 1.5, duration: 1.6 }}
                 >
-                  {role.fullname}
-                </motion.a>
+                  <Dropdown>
+                    <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                      {role.fullname}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </motion.div>
               </li>
             )}
             {!role.admin && (
