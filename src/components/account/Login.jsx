@@ -59,7 +59,7 @@ function Login({ showModalLogin, handleCloseLogin }) {
         </Modal.Header>
         <Modal.Body>
           <form>
-            <div className="form-group">
+            <div className="form-group mb-3">
               <label>Username</label>
               <input
                 type="text"
@@ -68,7 +68,7 @@ function Login({ showModalLogin, handleCloseLogin }) {
                 onChange={handleUsername}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group my-3">
               <label>Password</label>
               <input
                 type="password"

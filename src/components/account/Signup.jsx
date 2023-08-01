@@ -62,7 +62,7 @@ function Signup({ showModalSignup, handleCloseSignup }) {
         </Modal.Header>
         <Modal.Body>
           <form>
-            <div className="form-group">
+            <div className="form-group mb-3">
               <label>Full Name</label>
               <input
                 type="text"
@@ -71,7 +71,7 @@ function Signup({ showModalSignup, handleCloseSignup }) {
                 onChange={handleFullname}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group my-3">
               <label>Username</label>
               <input
                 type="text"
@@ -80,7 +80,7 @@ function Signup({ showModalSignup, handleCloseSignup }) {
                 onChange={handleUsername}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group my-3">
               <label>Password</label>
               <input
                 type="password"

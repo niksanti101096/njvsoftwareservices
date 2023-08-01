@@ -20,8 +20,11 @@ const CareerCard = ({
   setShowModal,
   setShowSaveBtn1,
   setShowUpdateBtn1,
-  setImageHolder
+  setImageHolder,
 }) => {
+  const role = sessionStorage.getItem("CurrentAccount")
+    ? JSON.parse(sessionStorage.getItem("CurrentAccount"))
+    : [{ fullname: "User", admin: false }];
   function handleDelete(id, title) {
     Swal.fire({
       title: `Are you sure you want to delete "${title}" from the careers?`,
@@ -42,20 +45,20 @@ const CareerCard = ({
     });
   }
   function handleUpdate(salary, title, desc, date, id, image) {
-    setShowModal(true)
-    setCareerTitle(title)
-    setCareerDate(date)
-    setCareerSalary(salary)
-    setCareerDescription(desc)
-    setCareerIdHolder(id)
-    setShowSaveBtn1(false)
-    setShowUpdateBtn1(true)
-    setImageHolder(image)
+    setShowModal(true);
+    setCareerTitle(title);
+    setCareerDate(date);
+    setCareerSalary(salary);
+    setCareerDescription(desc);
+    setCareerIdHolder(id);
+    setShowSaveBtn1(false);
+    setShowUpdateBtn1(true);
+    setImageHolder(image);
   }
   return (
     <Card className="p-0 overflow-hidden h-100 shadow">
       <div className="overflow-hidden rounded p-0 bg-light">
-        <Card.Img variant="top" src={image}/>
+        <Card.Img variant="top" src={image} />
       </div>
       <Card.Body className="text-center">
         <Card.Title>{title}</Card.Title>
@@ -67,23 +70,25 @@ const CareerCard = ({
           <h6>{date}</h6>
         </Card.Title>
       </Card.Body>
-      <Button className="w-100 rounded-0 btnApply" >
-        Apply Now!
-      </Button>
-      <Button
-        className="w-100 rounded-0 btnUpdate"
-        //variant="warning"
-        onClick={() => handleUpdate(salary, title, desc, date, id, image)}
-      >
-        Update
-      </Button>
-      <Button
-        className="w-100 rounded-0"
-        variant="danger"
-        onClick={() => handleDelete(id, title)}
-      >
-        Delete
-      </Button>
+      <Button className="w-100 rounded-0 btnApply">Apply Now!</Button>
+      {role.admin && (
+        <Button
+          className="w-100 rounded-0 btnUpdate"
+          //variant="warning"
+          onClick={() => handleUpdate(salary, title, desc, date, id, image)}
+        >
+          Update
+        </Button>
+      )}
+      {role.admin && (
+        <Button
+          className="w-100 rounded-0"
+          variant="danger"
+          onClick={() => handleDelete(id, title)}
+        >
+          Delete
+        </Button>
+      )}
     </Card>
   );
 };

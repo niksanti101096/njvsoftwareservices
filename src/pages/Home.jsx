@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 function Home() {
   return (
-    <div className="home d-flex flex-column justify-content-center w-50 ms-5">
+    <div className="home d-flex flex-column justify-content-center">
       <motion.div
-        className="sloganHome default-text-color"
+        className="sloganHome default-text-color ms-5 w-50"
         initial={{ x: "-50vw" }}
         animate={{ x: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
@@ -18,7 +18,7 @@ function Home() {
         animate={{ y: 0 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
-        <a className="text-decoration-none" href="/">
+        <a className="text-decoration-none fs-3 ms-5" href="/">
           Click here to learn more <ArrowRightAltIcon></ArrowRightAltIcon>
         </a>
       </motion.div>

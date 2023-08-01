@@ -6,7 +6,7 @@ function About() {
   return (
     <>
       <AboutUsIntro />
-      <div className="container mt-5">
+      <div className="container my-5">
         <div className="row align-items-center justify-content-evenly row-gap-5 column-gap-5">
           <h3 className=" text-center text-light">Meet the Team</h3>
           {data.map((items, index) => (
@@ -16,9 +16,9 @@ function About() {
                   <img src={items.image} alt="" />
                 </div>
                 <div className="card-body back d-flex flex-column justify-content-center align-items-center">
-                  <h4 className="card-title">{items.firstName +" "+ items.lastName}</h4>
-                  <h6 className="card-subtitle mb-2 text-muted">{items.role}</h6>
-                  <a href={items.git} className="card-link btn btn-secondary w-50 text-center btn-sm" target="_blank">
+                  <h1 className="card-title text-light">{items.firstName +" "+ items.lastName}</h1>
+                  <h3 className="card-subtitle mb-4 text-muted">{items.role}</h3>
+                  <a href={items.git} className="card-link btn btn-secondary w-50 text-center btn-sm" target="_blank" rel="noreferrer">
                     Learn More
                   </a>
                 </div>

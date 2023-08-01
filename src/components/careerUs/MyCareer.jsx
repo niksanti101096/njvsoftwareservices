@@ -21,6 +21,9 @@ const MyCareer = () => {
   const careerData = localStorage.getItem("Career1DB")
     ? JSON.parse(localStorage.getItem("Career1DB"))
     : [];
+  const role = sessionStorage.getItem("CurrentAccount")
+    ? JSON.parse(sessionStorage.getItem("CurrentAccount"))
+    : [{ fullname: "User", admin: false }];
 
   const [careerArray, setCareerArray] = useState(careerData);
   const [careerSalary, setCareerSalary] = useState("");
@@ -168,21 +171,23 @@ const MyCareer = () => {
   }, [careerArray]);
 
   return (
-    <div className=" ">
+    <div className=" mb-5">
       <br />
       <div className="container">
         <div className="headerCC mainbg1">
-            <div className=" w-50 ms-3 fs-700 fontSlogan">
-              <h1 className="header1">
-                Unlock Your Potential, Embrace Infinite Possibilities:
-              <span className="spn1"> Build Your Future with Our Software Services.</span> 
-                <SouthIcon></SouthIcon>
-              </h1>
-            </div>
-            <div className="imgCC">
-               <img src={carUP} alt="photo" className="imgSize" />
-            </div>
-
+          <div className=" w-50 ms-3 fs-700 fontSlogan">
+            <h1 className="header1">
+              Unlock Your Potential, Embrace Infinite Possibilities:
+              <span className="spn1">
+                {" "}
+                Build Your Future with Our Software Services.
+              </span>
+              <SouthIcon></SouthIcon>
+            </h1>
+          </div>
+          <div className="imgCC">
+            <img src={carUP} alt="photo" className="imgSize" />
+          </div>
         </div>
 
         <div className="mainbg2">
@@ -192,9 +197,11 @@ const MyCareer = () => {
               Developer | SQL Developer | UI/UX Design- Developer | Game
               Developer | App Developer
             </h1>
-            <button onClick={handleCareer1Add} className="btnAdd">
-              Add
-            </button>
+            {role.admin && (
+              <button onClick={handleCareer1Add} className="btnAdd">
+                Add
+              </button>
+            )}
           </div>
 
           <div className=" py-1">

@@ -8,6 +8,7 @@ import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import Technologies from "./pages/Technologies";
+import MyFooter from "./components/MyFooter";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/technologies" element={<Technologies />} />
         </Routes>
       </Router>
+      <MyFooter></MyFooter>
     </div>
   );
 }
