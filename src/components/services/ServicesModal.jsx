@@ -60,7 +60,7 @@ function ServicesModal({
             Close
           </Button>
           {showSaveBtn && (
-            <Button variant="primary" onClick={handleSave}>
+            <Button variant="success" onClick={handleSave}>
               Save Service
             </Button>
           )}

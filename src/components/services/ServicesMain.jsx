@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ServicesCard from "./ServicesCard";
 import ServicesModal from "./ServicesModal";
 import ServicesIntro from "./ServicesIntro";
+import Swal from "sweetalert2";
 
 function ServicesMain() {
   const servicesData = localStorage.getItem("ServicesDB")
@@ -56,60 +57,93 @@ function ServicesMain() {
   function handleSave(e) {
     e.preventDefault();
     if (servicesTitle !== "" && servicesDescription !== "") {
-      const serviceId = Date.now();
-
-      const newService = {
-        id: serviceId,
-        title: servicesTitle,
-        description: servicesDescription,
-        image: servicesImage,
-      };
-      setServicesArray([...servicesArray, newService]);
-      setServicesTitle("");
-      setServicesDescription("");
-      setServicesImage("");
-      setShowModal(false);
+      Swal.fire({
+        title: `Are you sure you want to add ${servicesTitle}?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, add it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const serviceId = Date.now();
+          const newService = {
+            id: serviceId,
+            title: servicesTitle,
+            description: servicesDescription,
+            image: servicesImage,
+          };
+          setServicesArray([...servicesArray, newService]);
+          setServicesTitle("");
+          setServicesDescription("");
+          setServicesImage("");
+          setShowModal(false);
+          Swal.fire("Added!", "The service has been added", "success");
+        }
+      });
     } else {
-      alert("Please fill all fields");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please check your inputs",
+      });
     }
   }
   function handleUpdate(e) {
     e.preventDefault();
     if (servicesTitle !== "" && servicesDescription !== "") {
-      if (servicesImage === "") {
-        const updateData = servicesArray.map((item) => {
-          if (item.id === idHolder) {
-            return {
-              ...item,
-              title: servicesTitle,
-              description: servicesDescription,
-              image: imageHolder,
-            };
+      Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          if (servicesImage === "") {
+            const updateData = servicesArray.map((item) => {
+              if (item.id === idHolder) {
+                return {
+                  ...item,
+                  title: servicesTitle,
+                  description: servicesDescription,
+                  image: imageHolder,
+                };
+              } else {
+                return item;
+              }
+            });
+            setServicesArray(updateData);
           } else {
-            return item;
+            const updateData = servicesArray.map((item) => {
+              if (item.id === idHolder) {
+                return {
+                  ...item,
+                  title: servicesTitle,
+                  description: servicesDescription,
+                  image: servicesImage,
+                };
+              } else {
+                return item;
+              }
+            });
+            setServicesArray(updateData);
           }
-        });
-        setServicesArray(updateData);
-      } else {
-        const updateData = servicesArray.map((item) => {
-          if (item.id === idHolder) {
-            return {
-              ...item,
-              title: servicesTitle,
-              description: servicesDescription,
-              image: servicesImage,
-            };
-          } else {
-            return item;
-          }
-        });
-        setServicesArray(updateData);
-      }
 
-      setServicesTitle("");
-      setServicesDescription("");
-      setServicesImage("");
-      setShowModal(false);
+          setServicesTitle("");
+          setServicesDescription("");
+          setServicesImage("");
+          setShowModal(false);
+          Swal.fire("Saved!", "", "success");
+        } else if (result.isDenied) {
+          Swal.fire("Changes are not saved", "", "info");
+          setServicesTitle("");
+          setServicesDescription("");
+          setServicesImage("");
+          setShowModal(false);
+        }
+      });
     }
   }
 

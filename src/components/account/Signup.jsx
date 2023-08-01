@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Swal from "sweetalert2";
 
 function Signup({ showModalSignup, handleCloseSignup }) {
   const data = localStorage.getItem("AccountsDB")
@@ -26,39 +27,27 @@ function Signup({ showModalSignup, handleCloseSignup }) {
   function handleSignup(e) {
     e.preventDefault();
     if (fullname !== "" && username !== "" && password !== "") {
-      alert("hoy");
-      if (accountsData.length > 0) {
-        accountsData.map((item) => {
-          if (item.username === username) {
-            alert("Username already in use!");
-          } else {
-            const newAccount = {
-              fullname: fullname,
-              username: username,
-              password: password,
-              admin: true,
-            };
-            localStorage.setItem(
-              "AccountsDB",
-              JSON.stringify([...data, newAccount])
-            );
-            handleCloseSignup();
-          }
-          return null;
-        });
-      } else {
-        const newAccount = {
-          fullname: fullname,
-          username: username,
-          password: password,
-          admin: true,
-        };
-        localStorage.setItem(
-          "AccountsDB",
-          JSON.stringify([...data, newAccount])
-        );
-        handleCloseSignup();
-      }
+      Swal.fire({
+        icon: "success",
+        title: "Account has been created",
+        showConfirmButton: false,
+        showCancelButton: true,
+        cancelButtonText: "Proceed",
+        cancelButtonColor: "#75cb75"
+      });
+      const id = Date.now();
+      const newAccount = {
+        id: id,
+        fullname: fullname,
+        username: username,
+        password: password,
+        admin: true,
+      };
+      localStorage.setItem("AccountsDB", JSON.stringify([...data, newAccount]));
+      handleCloseSignup();
+      setFullname("");
+      setUsername("");
+      setPassword("");
     }
   }
   return (

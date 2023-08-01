@@ -5,6 +5,8 @@ import Login from "./account/Login";
 import Signup from "./account/Signup";
 import Dropdown from "react-bootstrap/Dropdown";
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
+
 
 function MyHeader() {
   const role = sessionStorage.getItem("CurrentAccount")
@@ -31,7 +33,15 @@ function MyHeader() {
   }
   function handleLogout() {
     sessionStorage.removeItem("CurrentAccount");
-    window.location.reload();
+    Swal.fire({
+      icon: 'success',
+      title: 'Successfully logged out',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    setTimeout(() => {
+      window.location.reload();
+    }, 1500)
   }
   return (
     <>

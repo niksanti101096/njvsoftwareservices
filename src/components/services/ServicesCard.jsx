@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
+import Swal from "sweetalert2";
 
 function ServicesCard({
   servicesArray,
@@ -17,11 +18,23 @@ function ServicesCard({
     : [{ fullname: "User", admin: false }];
 
   function handleDeleteService(data) {
-    const newService = JSON.parse(localStorage.getItem("ServicesDB")).filter(
-      (item) => data.id !== item.id
-    );
-    setServicesArray(newService);
-    localStorage.setItem("ServicesDB", JSON.stringify(newService));
+    Swal.fire({
+      title: `Are you sure you want to delete "${data.title}" from the services?`,
+      showDenyButton: true,
+      confirmButtonText: "Delete",
+      denyButtonText: `Wait! I've changed my mind.`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const newService = JSON.parse(
+          localStorage.getItem("ServicesDB")
+        ).filter((item) => data.id !== item.id);
+        setServicesArray(newService);
+        localStorage.setItem("ServicesDB", JSON.stringify(newService));
+        Swal.fire("Service has been deleted!", "", "success");
+      } else if (result.isDenied) {
+        Swal.fire("Service has been saved", "", "info");
+      }
+    });
   }
 
   function handleUpdateService(data) {
@@ -40,7 +53,7 @@ function ServicesCard({
         {servicesArray.map((item, index) => (
           <div className="col d-flex justify-content-center" key={index}>
             <motion.div
-              className="card my-5 w-75 rounded-4 text-white bg-secondary"
+              className="card my-5 w-75 rounded-4 text-white bg-primary"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.5 }}
@@ -53,24 +66,26 @@ function ServicesCard({
                 />
               </div>
               <div className="card-body">
-                <h5 className="card-title fw-bold">{item.title}</h5>
-                <p className="card-text">{item.description}</p>
+                <h3 className="card-title fw-bold text-info">{item.title}</h3>
+                <p className="card-text services-card-text mt-3 fw-lighter">
+                  {item.description}
+                </p>
               </div>
               {role.admin && (
                 <div className="card-body d-flex justify-content-between">
-                <button
-                  className="btn btn-warning btn-sm"
-                  onClick={() => handleUpdateService(item)}
-                >
-                  Update Service
-                </button>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => handleDeleteService(item)}
-                >
-                  Delete Service
-                </button>
-              </div>
+                  <button
+                    className="btn btn-warning btn-sm"
+                    onClick={() => handleUpdateService(item)}
+                  >
+                    Update Service
+                  </button>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => handleDeleteService(item)}
+                  >
+                    Delete Service
+                  </button>
+                </div>
               )}
             </motion.div>
           </div>
