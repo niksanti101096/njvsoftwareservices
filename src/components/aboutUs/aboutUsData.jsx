@@ -5,7 +5,7 @@ const data = [
     role: "Developer",
     image:
       "https://scontent.fdvo2-2.fna.fbcdn.net/v/t1.18169-9/12310470_1000617619981075_7082378101175749562_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=174925&_nc_eui2=AeGbN7ZTevJWdtO4onDcqMIj3i_gCZVXfZbeL-AJlVd9lqLs3px0o1rszPULVTTgD3PApXqM9aPQvK2tINxFPeC_&_nc_ohc=_LXg_XkrzDYAX_GLqBH&_nc_ht=scontent.fdvo2-2.fna&oh=00_AfBooOIehd0oc2yslNvbbLZpWlJ-H1OZnzqamB-pCFmUvA&oe=64E3FC1E",
-    git: "",
+    git: "https://niksanti101096.github.io/myeportfolio/",
   },
   {
     firstName: "John Harvey",
