@@ -18,7 +18,7 @@ function About() {
                 <div className="card-body back d-flex flex-column justify-content-center align-items-center">
                   <h4 className="card-title">{items.firstName +" "+ items.lastName}</h4>
                   <h6 className="card-subtitle mb-2 text-muted">{items.role}</h6>
-                  <a href="/" className="card-link btn btn-secondary w-50 text-center btn-sm">
+                  <a href={items.git} className="card-link btn btn-secondary w-50 text-center btn-sm" target="_blank">
                     Learn More
                   </a>
                 </div>
