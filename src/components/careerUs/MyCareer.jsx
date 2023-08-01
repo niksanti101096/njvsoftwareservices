@@ -149,7 +149,7 @@ const MyCareer = () => {
               </h1>
             </div>
             <div className="imgCC">
-               <img src={carUP} alt="" className="imgCC" />
+               <img src={carUP} alt="photo" className="imgSize" />
             </div>
 
         </div>
