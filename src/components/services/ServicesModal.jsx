@@ -21,7 +21,9 @@ function ServicesModal({
     <>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title className=" text-light">Add Service</Modal.Title>
+          <Modal.Title className=" text-light">
+            {showUpdateBtn? "Update Service" : "Add Service"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>

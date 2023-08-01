@@ -18,7 +18,7 @@ function Home() {
         animate={{ y: 0 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
-        <a className="text-decoration-none fs-3 ms-5" href="/">
+        <a className="text-decoration-none fs-4 ms-5 text-info" href="/">
           Click here to learn more <ArrowRightAltIcon></ArrowRightAltIcon>
         </a>
       </motion.div>
