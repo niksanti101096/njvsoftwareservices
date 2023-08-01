@@ -172,19 +172,17 @@ const MyCareer = () => {
       <br />
       <div className="container">
         <div className="headerCC mainbg1">
-          <div className=" w-50 ms-3 fs-700 fontSlogan">
-            <h1 className="header1">
-              Unlock Your Potential, Embrace Infinite Possibilities:
-              <span className="spn1">
-                {" "}
-                Build Your Future with Our Software Services.
-              </span>
-              <SouthIcon></SouthIcon>
-            </h1>
-          </div>
-          <div className="imgCC">
-            <img src={carUP} alt="" className="imgCC" />
-          </div>
+            <div className=" w-50 ms-3 fs-700 fontSlogan">
+              <h1 className="header1">
+                Unlock Your Potential, Embrace Infinite Possibilities:
+              <span className="spn1"> Build Your Future with Our Software Services.</span> 
+                <SouthIcon></SouthIcon>
+              </h1>
+            </div>
+            <div className="imgCC">
+               <img src={carUP} alt="photo" className="imgSize" />
+            </div>
+
         </div>
 
         <div className="mainbg2">

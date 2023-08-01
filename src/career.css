@@ -10,8 +10,6 @@
   padding-top: 0%;
   border: 0;
   margin: 0;
-  
-
 }
 .headerCC {
   display: flex;
@@ -24,7 +22,7 @@
  
 }
 .header1 {
-  font-size: 4.5em;
+  font-size: 4.3em;
   color: #FCF8E8;
   
 }
@@ -38,9 +36,11 @@
   color: #FCF8E8;
 }
 .imgCC {
-
   height: 90vh;
 
+}
+.imgSize{
+  height: 97vh;
 }
  /* ============== window2 ============= */
  .mainbg2 {
@@ -48,8 +48,7 @@
   /* background-image: url(./components/careerUs/img/bg3.png); */
   background-size: cover;
   padding-top: 45px;
- 
-
+  
 }
 /* .imgCC2 {
   height: 60vh;
@@ -91,5 +90,119 @@
   color: #E3F2C1;
 }
 
+/*  BREAKPOINTS */
+@media (max-width: 1280px) {
+  .mainbg2{
+    padding: 0;
+    margin-left: 1%;
+  }
+  .header1 {
+    font-size: 4.5em;
+    color: #FCF8E8;
+    margin-left: -2%;
+    padding: 0;
+    height: 80vh;
+    width: 140%;
+  }
+  .header2 {
+   
+    color: #FCF8E8;
+    padding: 0;
+    margin-left: 3%;
+    width: 90%;
 
+  }
+}
 
+@media (max-width: 991px) {
+
+  .mainbg2{
+    padding: 0;
+    margin-left: -1%;
+  }
+  .header1 {
+    font-size: 3em;
+    color: #FCF8E8;
+    margin-left: -45%;
+    padding: 0;
+    height: 70vh;
+  }
+  .imgCC{
+    position: absolute;
+   height: 60vh;
+   opacity: 70%;
+   margin-left: -1%;
+  }
+  .imgSize{
+    height: 60vh;
+  }
+  .header2 {
+    display: flex;
+    flex-direction: column;
+    color: #FCF8E8;
+    padding: 0;
+    margin-left: -1%;
+
+  }
+}
+
+@media (max-width: 768px) {
+  .mainbg2{
+    padding: 0;
+    margin-left: 2%;
+  }
+  .header1 {
+    font-size: 3em;
+    color: #FCF8E8;
+    margin-left: -50%;
+    padding: 0;
+    height: 80vh;
+    width: 140%;
+  }
+  
+  .header2 {
+    display: flex;
+    flex-direction: column;
+    color: #FCF8E8;
+    padding: 0;
+    margin-left: 2%;
+
+  }
+ 
+}
+
+@media screen and (max-width: 480px) {
+ 
+
+  .mainbg2{
+    padding: 0;
+    margin-left: -1%;
+  }
+  .header1 {
+    font-size: 2em;
+    color: #FCF8E8;
+    margin-left: -50px;
+    padding: 0;
+    height: 80vh;
+    width: 140%;
+    
+  }
+  .imgCC{
+    position: absolute;
+   height: 60vh;
+   opacity: 70%;
+   margin-left: -1%;
+  }
+  .imgSize{
+    height: 70vh;
+  }
+  .header2 {
+  
+    color: #FCF8E8;
+    padding: 0;
+    margin-left: 7%;
+   
+
+  }
+
+}
