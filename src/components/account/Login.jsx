@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Swal from "sweetalert2";
 
 function Login({ showModalLogin, handleCloseLogin }) {
   const data = localStorage.getItem("AccountsDB")
@@ -21,16 +22,27 @@ function Login({ showModalLogin, handleCloseLogin }) {
   function handleLogin(e) {
     accountsData.forEach((data) => {
       console.log(data.username);
-      console.log(username)
+      console.log(username);
       if (data.username === username && data.password === password) {
         sessionStorage.clear("CurrentAccount");
         sessionStorage.setItem("CurrentAccount", JSON.stringify(data));
         handleCloseLogin();
-        alert("Successfully logged in");
-        window.location.reload();
+        Swal.fire({
+          icon: "success",
+          title: "Successfully logged in",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
       } else {
-        console.log(data);
-        alert("Invalid")
+        Swal.fire({
+          icon: "error",
+          title: "Invalid username or password",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     });
   }

@@ -46,6 +46,7 @@
 .sloganAboutUs {
   align-items: center;
   font-size: 7rem;
+  text-shadow: 2px 2px #000;
 }
 
 .sloganServices {
@@ -66,6 +67,13 @@
 }
 .home div {
   line-height: 6rem;
+}
+
+.about {
+  min-height: 100vh;
+  background: url("https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .wrapper0,
@@ -125,7 +133,7 @@
   transform: rotateY(180deg);
   position: absolute;
   border-radius: 50px;
-  height: 450px;
+  height: 100%;
 }
 
 #mobile {
@@ -144,6 +152,10 @@
 
 .contact form {
   background: rgba(39,43,48, 0.5);
+}
+
+.services-card-text {
+  font-size: 0.9rem;
 }
 
 @media screen and (max-width: 992px) {

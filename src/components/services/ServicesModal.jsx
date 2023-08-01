@@ -21,12 +21,12 @@ function ServicesModal({
     <>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Service</Modal.Title>
+          <Modal.Title className=" text-light">Add Service</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
-            <div className="form-group">
-              <label>Service Title</label>
+            <div className="form-group mb-4">
+              <label className=" text-light">Service Title</label>
               <input
                 type="text"
                 className="form-control"
@@ -35,8 +35,8 @@ function ServicesModal({
                 onChange={handleServiceTitle}
               />
             </div>
-            <div className="form-group">
-              <label>Service Description</label>
+            <div className="form-group my-4">
+              <label className=" text-light">Service Description</label>
               <textarea
                 className="form-control"
                 rows="3"
@@ -44,8 +44,8 @@ function ServicesModal({
                 onChange={handleServiceDescription}
               ></textarea>
             </div>
-            <div className="form-group">
-              <label>Service Image Link</label>
+            <div className="form-group my-4">
+              <label className=" text-light">Service Image Link</label>
               <input
                 type="file"
                 className="form-control"
@@ -60,7 +60,7 @@ function ServicesModal({
             Close
           </Button>
           {showSaveBtn && (
-            <Button variant="primary" onClick={handleSave}>
+            <Button variant="success" onClick={handleSave}>
               Save Service
             </Button>
           )}

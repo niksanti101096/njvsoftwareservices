@@ -71,7 +71,7 @@ const CareerModal = ({
             Close
           </Button>
          {showSaveBtn1 && (
-             <Button variant="primary" onClick={handleSave1}>
+             <Button variant="success" onClick={handleSave1}>
              Save 
            </Button>
          )}

@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import ForumIcon from "@mui/icons-material/Forum";
 import SendIcon from "@mui/icons-material/Send";
+import Swal from "sweetalert2";
+
 
 function ContactMain() {
   const data = localStorage.getItem("ContactDB")
@@ -17,6 +19,12 @@ function ContactMain() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    Swal.fire({
+      icon: 'success',
+      title: 'Your message has been sent',
+      showConfirmButton: false,
+      timer: 1500
+    })
     const contactId = Date.now();
 
     setContactArray([
