@@ -26,7 +26,7 @@ const MyCareer = () => {
   const [careerDate, setCareerDate] = useState("");
   const [careerTitle, setCareerTitle] = useState("");
   const [careerDescription, setCareerDescription] = useState("");
-  const [careerImage, setCareerImage] = useState();
+  const [careerImage, setCareerImage] = useState("");
   const [careerIdHolder, setCareerIdHolder] = useState();
   const [showSaveBtn1, setShowSaveBtn1] = useState(true);
   const [showUpdateBtn1, setShowUpdateBtn1] = useState(false);
@@ -108,6 +108,7 @@ const MyCareer = () => {
       setCareerDate("");
       setCareerSalary("");
       setCareerDescription("");
+      setCareerImage("");
     }
   }
   function handleSave1(e) {
