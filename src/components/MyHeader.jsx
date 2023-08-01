@@ -121,7 +121,7 @@ function MyHeader() {
                   transition={{ delay: 1.5, duration: 1.6 }}
                 >
                   <Dropdown>
-                    <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    <Dropdown.Toggle variant="primary" id="dropdown-basic" className="btn-sm">
                       {role.fullname}
                     </Dropdown.Toggle>
 
