@@ -72,7 +72,7 @@ function ServicesCard({
                 </p>
               </div>
               {role.admin && (
-                <div className="card-body d-flex justify-content-between">
+                <div className="card-body d-flex justify-content-between align-items-end">
                   <button
                     className="btn btn-warning btn-sm"
                     onClick={() => handleUpdateService(item)}
