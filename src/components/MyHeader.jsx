@@ -50,7 +50,7 @@ function MyHeader() {
         data-bs-theme="dark"
       >
         <motion.a
-          href="/"
+          href="/njvsoftwareservices"
           className="navbar-brand"
           initial={{ y: "-10vh" }}
           animate={{ y: 0 }}
@@ -70,7 +70,7 @@ function MyHeader() {
             <li className="nav-item">
               <motion.a
                 className="nav-link hover-underline-animation"
-                href="/aboutUs"
+                href="/njvsoftwareservices/aboutUs"
                 initial={{ y: "-10vh" }}
                 animate={{ y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -92,7 +92,7 @@ function MyHeader() {
             <li className="nav-item">
               <motion.a
                 className="nav-link hover-underline-animation"
-                href="/careers"
+                href="/njvsoftwareservices/careers"
                 initial={{ y: "-10vh" }}
                 animate={{ y: 0 }}
                 transition={{ delay: 0.9, duration: 1 }}
@@ -103,7 +103,7 @@ function MyHeader() {
             <li className="nav-item">
               <motion.a
                 className="nav-link hover-underline-animation disabled"
-                href="/technologies"
+                href="/njvsoftwareservices/technologies"
                 initial={{ y: "-10vh" }}
                 animate={{ y: 0 }}
                 transition={{ delay: 1.1, duration: 1.2 }}
@@ -114,7 +114,7 @@ function MyHeader() {
             <li className="nav-item me-lg-5 me-md-2">
               <motion.a
                 className="nav-link hover-underline-animation"
-                href="/contactUs"
+                href="/njvsoftwareservices/contactUs"
                 initial={{ y: "-10vh" }}
                 animate={{ y: 0 }}
                 transition={{ delay: 1.3, duration: 1.4 }}
