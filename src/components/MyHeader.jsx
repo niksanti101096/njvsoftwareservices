@@ -81,7 +81,7 @@ function MyHeader() {
             <li className="nav-item">
               <motion.a
                 className="nav-link hover-underline-animation"
-                href="/services"
+                href="/njvsoftwareservices/services"
                 initial={{ y: "-10vh" }}
                 animate={{ y: 0 }}
                 transition={{ delay: 0.7, duration: 0.8 }}
