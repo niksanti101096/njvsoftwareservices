@@ -102,7 +102,7 @@ function MyHeader() {
             </li>
             <li className="nav-item">
               <motion.a
-                className="nav-link hover-underline-animation"
+                className="nav-link hover-underline-animation disabled"
                 href="/technologies"
                 initial={{ y: "-10vh" }}
                 animate={{ y: 0 }}

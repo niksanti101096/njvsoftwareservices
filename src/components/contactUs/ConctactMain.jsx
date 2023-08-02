@@ -4,7 +4,6 @@ import ForumIcon from "@mui/icons-material/Forum";
 import SendIcon from "@mui/icons-material/Send";
 import Swal from "sweetalert2";
 
-
 function ContactMain() {
   const data = localStorage.getItem("ContactDB")
     ? JSON.parse(localStorage.getItem("ContactDB"))
@@ -20,11 +19,11 @@ function ContactMain() {
   function handleSubmit(e) {
     e.preventDefault();
     Swal.fire({
-      icon: 'success',
-      title: 'Your message has been sent',
+      icon: "success",
+      title: "Your message has been sent",
       showConfirmButton: false,
-      timer: 1500
-    })
+      timer: 1500,
+    });
     const contactId = Date.now();
 
     setContactArray([
@@ -44,7 +43,7 @@ function ContactMain() {
   }
   useEffect(() => {
     localStorage.setItem("ContactDB", JSON.stringify(contactArray));
-  }, [contactArray])
+  }, [contactArray]);
   return (
     <div className="contact ps-0 ps-md-5 d-flex align-items-center justify-content-md-start justify-content-center">
       <form className="py-5 rounded-5 px-3" onSubmit={handleSubmit}>
@@ -57,8 +56,8 @@ function ContactMain() {
           >
             <ForumIcon fontSize="large" /> Let's Talk <br />
             <small className="fs-6">
-              Have any questions about our services and careers? Bump us a
-              message
+              Have any questions about our services and careers?<br />Bump us a
+              message.
             </small>
           </motion.legend>
           <div className="form-group mb-3 row mx-0">
