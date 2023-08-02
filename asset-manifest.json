@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/njvsoftwareservices/static/css/main.d47ae472.css",
-    "main.js": "/njvsoftwareservices/static/js/main.c96c76e0.js",
+    "main.js": "/njvsoftwareservices/static/js/main.c4e00f61.js",
     "static/media/bg2.png": "/njvsoftwareservices/static/media/bg2.dcd98f48863340c84568.png",
     "static/media/sftware.png": "/njvsoftwareservices/static/media/sftware.b77ddc60a7fd097691e6.png",
     "static/media/carUP.png": "/njvsoftwareservices/static/media/carUP.ecd264dfee4cbf33b037.png",
     "index.html": "/njvsoftwareservices/index.html",
     "main.d47ae472.css.map": "/njvsoftwareservices/static/css/main.d47ae472.css.map",
-    "main.c96c76e0.js.map": "/njvsoftwareservices/static/js/main.c96c76e0.js.map"
+    "main.c4e00f61.js.map": "/njvsoftwareservices/static/js/main.c4e00f61.js.map"
   },
   "entrypoints": [
     "static/css/main.d47ae472.css",
-    "static/js/main.c96c76e0.js"
+    "static/js/main.c4e00f61.js"
   ]
 }
